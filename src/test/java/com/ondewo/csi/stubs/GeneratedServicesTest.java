@@ -120,7 +120,8 @@ class GeneratedServicesTest {
                                 "GetS2sPipeline",
                                 "UpdateS2sPipeline",
                                 "DeleteS2sPipeline",
-                                "ListS2sPipelines")),
+                                "ListS2sPipelines",
+                                "SetCallMediaControl")),
                 "missing rpcs, got " + methods);
         assertEquals(
                 MethodDescriptor.MethodType.UNARY,
@@ -133,6 +134,10 @@ class GeneratedServicesTest {
         assertEquals(
                 MethodDescriptor.MethodType.BIDI_STREAMING,
                 ConversationsGrpc.getS2sStreamMethod().getType());
+        // Added in ondewo-csi-api 5.6.0.
+        assertEquals(
+                MethodDescriptor.MethodType.UNARY,
+                ConversationsGrpc.getSetCallMediaControlMethod().getType());
     }
 
     /**

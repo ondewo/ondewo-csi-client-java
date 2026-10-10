@@ -7995,7 +7995,8 @@ public final class Conversation {
       TRANSFER(5),
       /**
        * <pre>
-       * invite to conference call
+       * invite to conference call. NOT IMPLEMENTED: ondewo-csi cannot reach ondewo-vtsi, which owns call
+       * participants. Invite a softphone with the ondewo-vtsi &lt;code&gt;Calls.InviteToCall&lt;/code&gt; RPC instead
        * </pre>
        *
        * <code>INVITE = 6;</code>
@@ -8071,7 +8072,8 @@ public final class Conversation {
       public static final int TRANSFER_VALUE = 5;
       /**
        * <pre>
-       * invite to conference call
+       * invite to conference call. NOT IMPLEMENTED: ondewo-csi cannot reach ondewo-vtsi, which owns call
+       * participants. Invite a softphone with the ondewo-vtsi &lt;code&gt;Calls.InviteToCall&lt;/code&gt; RPC instead
        * </pre>
        *
        * <code>INVITE = 6;</code>
@@ -10413,6 +10415,57 @@ public final class Conversation {
      * @return The epoch.
      */
     long getEpoch();
+
+    /**
+     * <pre>
+     * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+     * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+     * connect.&lt;/p&gt;
+     *
+     * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+     * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+     * server echoes the current control status and epoch in it, but a client that applied that
+     * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+     * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+     * @return Whether the mediaControl field is set.
+     */
+    boolean hasMediaControl();
+    /**
+     * <pre>
+     * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+     * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+     * connect.&lt;/p&gt;
+     *
+     * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+     * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+     * server echoes the current control status and epoch in it, but a client that applied that
+     * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+     * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+     * @return The mediaControl.
+     */
+    ondewo.csi.Conversation.CallMediaControlLevel getMediaControl();
+    /**
+     * <pre>
+     * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+     * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+     * connect.&lt;/p&gt;
+     *
+     * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+     * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+     * server echoes the current control status and epoch in it, but a client that applied that
+     * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+     * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+     */
+    ondewo.csi.Conversation.CallMediaControlLevelOrBuilder getMediaControlOrBuilder();
   }
   /**
    * <pre>
@@ -10456,6 +10509,7 @@ public final class Conversation {
               ondewo.csi.Conversation.ControlStreamResponse.class, ondewo.csi.Conversation.ControlStreamResponse.Builder.class);
     }
 
+    private int bitField0_;
     public static final int CONTROL_STATUS_FIELD_NUMBER = 1;
     private int controlStatus_ = 0;
     /**
@@ -10497,6 +10551,68 @@ public final class Conversation {
       return epoch_;
     }
 
+    public static final int MEDIA_CONTROL_FIELD_NUMBER = 3;
+    private ondewo.csi.Conversation.CallMediaControlLevel mediaControl_;
+    /**
+     * <pre>
+     * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+     * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+     * connect.&lt;/p&gt;
+     *
+     * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+     * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+     * server echoes the current control status and epoch in it, but a client that applied that
+     * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+     * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+     * @return Whether the mediaControl field is set.
+     */
+    @java.lang.Override
+    public boolean hasMediaControl() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+     * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+     * connect.&lt;/p&gt;
+     *
+     * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+     * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+     * server echoes the current control status and epoch in it, but a client that applied that
+     * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+     * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+     * @return The mediaControl.
+     */
+    @java.lang.Override
+    public ondewo.csi.Conversation.CallMediaControlLevel getMediaControl() {
+      return mediaControl_ == null ? ondewo.csi.Conversation.CallMediaControlLevel.getDefaultInstance() : mediaControl_;
+    }
+    /**
+     * <pre>
+     * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+     * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+     * connect.&lt;/p&gt;
+     *
+     * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+     * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+     * server echoes the current control status and epoch in it, but a client that applied that
+     * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+     * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+     */
+    @java.lang.Override
+    public ondewo.csi.Conversation.CallMediaControlLevelOrBuilder getMediaControlOrBuilder() {
+      return mediaControl_ == null ? ondewo.csi.Conversation.CallMediaControlLevel.getDefaultInstance() : mediaControl_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -10517,6 +10633,9 @@ public final class Conversation {
       if (epoch_ != 0L) {
         output.writeUInt64(2, epoch_);
       }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(3, getMediaControl());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -10533,6 +10652,10 @@ public final class Conversation {
       if (epoch_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(2, epoch_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getMediaControl());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -10552,6 +10675,11 @@ public final class Conversation {
       if (controlStatus_ != other.controlStatus_) return false;
       if (getEpoch()
           != other.getEpoch()) return false;
+      if (hasMediaControl() != other.hasMediaControl()) return false;
+      if (hasMediaControl()) {
+        if (!getMediaControl()
+            .equals(other.getMediaControl())) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -10568,6 +10696,10 @@ public final class Conversation {
       hash = (37 * hash) + EPOCH_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getEpoch());
+      if (hasMediaControl()) {
+        hash = (37 * hash) + MEDIA_CONTROL_FIELD_NUMBER;
+        hash = (53 * hash) + getMediaControl().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -10691,13 +10823,19 @@ public final class Conversation {
 
       // Construct using ondewo.csi.Conversation.ControlStreamResponse.newBuilder()
       private Builder() {
-
+        maybeForceBuilderInitialization();
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
-
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage
+                .alwaysUseFieldBuilders) {
+          internalGetMediaControlFieldBuilder();
+        }
       }
       @java.lang.Override
       public Builder clear() {
@@ -10705,6 +10843,11 @@ public final class Conversation {
         bitField0_ = 0;
         controlStatus_ = 0;
         epoch_ = 0L;
+        mediaControl_ = null;
+        if (mediaControlBuilder_ != null) {
+          mediaControlBuilder_.dispose();
+          mediaControlBuilder_ = null;
+        }
         return this;
       }
 
@@ -10744,6 +10887,14 @@ public final class Conversation {
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.epoch_ = epoch_;
         }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.mediaControl_ = mediaControlBuilder_ == null
+              ? mediaControl_
+              : mediaControlBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
 
       @java.lang.Override
@@ -10763,6 +10914,9 @@ public final class Conversation {
         }
         if (other.getEpoch() != 0L) {
           setEpoch(other.getEpoch());
+        }
+        if (other.hasMediaControl()) {
+          mergeMediaControl(other.getMediaControl());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -10800,6 +10954,13 @@ public final class Conversation {
                 bitField0_ |= 0x00000002;
                 break;
               } // case 16
+              case 26: {
+                input.readMessage(
+                    internalGetMediaControlFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -10930,6 +11091,235 @@ public final class Conversation {
         epoch_ = 0L;
         onChanged();
         return this;
+      }
+
+      private ondewo.csi.Conversation.CallMediaControlLevel mediaControl_;
+      private com.google.protobuf.SingleFieldBuilder<
+          ondewo.csi.Conversation.CallMediaControlLevel, ondewo.csi.Conversation.CallMediaControlLevel.Builder, ondewo.csi.Conversation.CallMediaControlLevelOrBuilder> mediaControlBuilder_;
+      /**
+       * <pre>
+       * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+       * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+       * connect.&lt;/p&gt;
+       *
+       * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+       * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+       * server echoes the current control status and epoch in it, but a client that applied that
+       * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+       * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+       * @return Whether the mediaControl field is set.
+       */
+      public boolean hasMediaControl() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+       * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+       * connect.&lt;/p&gt;
+       *
+       * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+       * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+       * server echoes the current control status and epoch in it, but a client that applied that
+       * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+       * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+       * @return The mediaControl.
+       */
+      public ondewo.csi.Conversation.CallMediaControlLevel getMediaControl() {
+        if (mediaControlBuilder_ == null) {
+          return mediaControl_ == null ? ondewo.csi.Conversation.CallMediaControlLevel.getDefaultInstance() : mediaControl_;
+        } else {
+          return mediaControlBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+       * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+       * connect.&lt;/p&gt;
+       *
+       * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+       * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+       * server echoes the current control status and epoch in it, but a client that applied that
+       * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+       * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+       */
+      public Builder setMediaControl(ondewo.csi.Conversation.CallMediaControlLevel value) {
+        if (mediaControlBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          mediaControl_ = value;
+        } else {
+          mediaControlBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+       * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+       * connect.&lt;/p&gt;
+       *
+       * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+       * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+       * server echoes the current control status and epoch in it, but a client that applied that
+       * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+       * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+       */
+      public Builder setMediaControl(
+          ondewo.csi.Conversation.CallMediaControlLevel.Builder builderForValue) {
+        if (mediaControlBuilder_ == null) {
+          mediaControl_ = builderForValue.build();
+        } else {
+          mediaControlBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+       * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+       * connect.&lt;/p&gt;
+       *
+       * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+       * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+       * server echoes the current control status and epoch in it, but a client that applied that
+       * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+       * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+       */
+      public Builder mergeMediaControl(ondewo.csi.Conversation.CallMediaControlLevel value) {
+        if (mediaControlBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0) &&
+            mediaControl_ != null &&
+            mediaControl_ != ondewo.csi.Conversation.CallMediaControlLevel.getDefaultInstance()) {
+            getMediaControlBuilder().mergeFrom(value);
+          } else {
+            mediaControl_ = value;
+          }
+        } else {
+          mediaControlBuilder_.mergeFrom(value);
+        }
+        if (mediaControl_ != null) {
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+       * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+       * connect.&lt;/p&gt;
+       *
+       * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+       * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+       * server echoes the current control status and epoch in it, but a client that applied that
+       * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+       * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+       */
+      public Builder clearMediaControl() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        mediaControl_ = null;
+        if (mediaControlBuilder_ != null) {
+          mediaControlBuilder_.dispose();
+          mediaControlBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+       * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+       * connect.&lt;/p&gt;
+       *
+       * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+       * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+       * server echoes the current control status and epoch in it, but a client that applied that
+       * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+       * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+       */
+      public ondewo.csi.Conversation.CallMediaControlLevel.Builder getMediaControlBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return internalGetMediaControlFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+       * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+       * connect.&lt;/p&gt;
+       *
+       * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+       * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+       * server echoes the current control status and epoch in it, but a client that applied that
+       * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+       * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+       */
+      public ondewo.csi.Conversation.CallMediaControlLevelOrBuilder getMediaControlOrBuilder() {
+        if (mediaControlBuilder_ != null) {
+          return mediaControlBuilder_.getMessageOrBuilder();
+        } else {
+          return mediaControl_ == null ?
+              ondewo.csi.Conversation.CallMediaControlLevel.getDefaultInstance() : mediaControl_;
+        }
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Optional. The per-call operator media control level. Set ONLY on media-control messages: pushed when the
+       * level changes (&lt;code&gt;SetCallMediaControl&lt;/code&gt;) and sent as the seed on every &lt;code&gt;GetControlStream&lt;/code&gt;
+       * connect.&lt;/p&gt;
+       *
+       * &lt;p&gt;A message that has this field set is a media-control message and nothing else: a client must handle it
+       * and must NOT read its &lt;code&gt;control_status&lt;/code&gt; / &lt;code&gt;epoch&lt;/code&gt; as a control status transition. The
+       * server echoes the current control status and epoch in it, but a client that applied that
+       * &lt;code&gt;control_status&lt;/code&gt; (e.g. &lt;code&gt;OK&lt;/code&gt;) would un-latch a pending &lt;code&gt;BARGE_IN&lt;/code&gt;.
+       * Messages without this field keep their meaning unchanged.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel media_control = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          ondewo.csi.Conversation.CallMediaControlLevel, ondewo.csi.Conversation.CallMediaControlLevel.Builder, ondewo.csi.Conversation.CallMediaControlLevelOrBuilder> 
+          internalGetMediaControlFieldBuilder() {
+        if (mediaControlBuilder_ == null) {
+          mediaControlBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              ondewo.csi.Conversation.CallMediaControlLevel, ondewo.csi.Conversation.CallMediaControlLevel.Builder, ondewo.csi.Conversation.CallMediaControlLevelOrBuilder>(
+                  getMediaControl(),
+                  getParentForChildren(),
+                  isClean());
+          mediaControl_ = null;
+        }
+        return mediaControlBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:ondewo.csi.ControlStreamResponse)
@@ -12135,6 +12525,2001 @@ public final class Conversation {
 
     @java.lang.Override
     public ondewo.csi.Conversation.SetControlStatusResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface CallMediaControlLevelOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ondewo.csi.CallMediaControlLevel)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the bot is muted: no text-to-speech is synthesized for new responses (the NLU turn
+     * still runs), the in-flight utterance is aborted and discarded (never resumed), and soft-timeout fillers,
+     * re-prompts and &lt;code&gt;PLAY_AUDIO&lt;/code&gt; triggers produce no audio.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>bool bot_muted = 1;</code>
+     * @return The botMuted.
+     */
+    boolean getBotMuted();
+
+    /**
+     * <pre>
+     * &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the bot stops listening: the caller audio sent to speech-to-text is replaced by muted
+     * zero frames at the capture cadence (the stream stays open and its clock stays aligned with the call), S2T
+     * responses are dropped before barge-in adjudication and before NLU, and the turn, soft and silence
+     * timers are suspended (they restart from zero on resume). Blanked audio is never back-filled.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>bool listening_paused = 2;</code>
+     * @return The listeningPaused.
+     */
+    boolean getListeningPaused();
+
+    /**
+     * <pre>
+     * &lt;p&gt;ondewo-sip's container-lifetime monotonic counter. Never reset per call. The server applies a level only
+     * when this value is strictly greater than the last applied one.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>uint64 generation = 3;</code>
+     * @return The generation.
+     */
+    long getGeneration();
+
+    /**
+     * <pre>
+     * &lt;p&gt;Bounded reason token for logs and telemetry: &lt;code&gt;operator&lt;/code&gt;, &lt;code&gt;participant&lt;/code&gt;,
+     * &lt;code&gt;takeover&lt;/code&gt; or &lt;code&gt;resync&lt;/code&gt;.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>string reason = 4;</code>
+     * @return The reason.
+     */
+    java.lang.String getReason();
+    /**
+     * <pre>
+     * &lt;p&gt;Bounded reason token for logs and telemetry: &lt;code&gt;operator&lt;/code&gt;, &lt;code&gt;participant&lt;/code&gt;,
+     * &lt;code&gt;takeover&lt;/code&gt; or &lt;code&gt;resync&lt;/code&gt;.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>string reason = 4;</code>
+     * @return The bytes for reason.
+     */
+    com.google.protobuf.ByteString
+        getReasonBytes();
+  }
+  /**
+   * <pre>
+   * &lt;p&gt;Per-call operator media control level, sent by ondewo-sip to &lt;code&gt;SetCallMediaControl&lt;/code&gt; and pushed by the
+   * server on the control stream (&lt;code&gt;ControlStreamResponse.media_control&lt;/code&gt;).&lt;/p&gt;
+   *
+   * &lt;p&gt;It always carries the FULL effective level. It is independent of the bot's own mixer mute that ondewo-csi
+   * requests from ondewo-sip with &lt;code&gt;SipMute&lt;/code&gt; / &lt;code&gt;SipUnMute&lt;/code&gt;.&lt;/p&gt;
+   * </pre>
+   *
+   * Protobuf type {@code ondewo.csi.CallMediaControlLevel}
+   */
+  public static final class CallMediaControlLevel extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ondewo.csi.CallMediaControlLevel)
+      CallMediaControlLevelOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 32,
+        /* patch= */ 0,
+        /* suffix= */ "",
+        CallMediaControlLevel.class.getName());
+    }
+    // Use CallMediaControlLevel.newBuilder() to construct.
+    private CallMediaControlLevel(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private CallMediaControlLevel() {
+      reason_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return ondewo.csi.Conversation.internal_static_ondewo_csi_CallMediaControlLevel_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return ondewo.csi.Conversation.internal_static_ondewo_csi_CallMediaControlLevel_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              ondewo.csi.Conversation.CallMediaControlLevel.class, ondewo.csi.Conversation.CallMediaControlLevel.Builder.class);
+    }
+
+    public static final int BOT_MUTED_FIELD_NUMBER = 1;
+    private boolean botMuted_ = false;
+    /**
+     * <pre>
+     * &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the bot is muted: no text-to-speech is synthesized for new responses (the NLU turn
+     * still runs), the in-flight utterance is aborted and discarded (never resumed), and soft-timeout fillers,
+     * re-prompts and &lt;code&gt;PLAY_AUDIO&lt;/code&gt; triggers produce no audio.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>bool bot_muted = 1;</code>
+     * @return The botMuted.
+     */
+    @java.lang.Override
+    public boolean getBotMuted() {
+      return botMuted_;
+    }
+
+    public static final int LISTENING_PAUSED_FIELD_NUMBER = 2;
+    private boolean listeningPaused_ = false;
+    /**
+     * <pre>
+     * &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the bot stops listening: the caller audio sent to speech-to-text is replaced by muted
+     * zero frames at the capture cadence (the stream stays open and its clock stays aligned with the call), S2T
+     * responses are dropped before barge-in adjudication and before NLU, and the turn, soft and silence
+     * timers are suspended (they restart from zero on resume). Blanked audio is never back-filled.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>bool listening_paused = 2;</code>
+     * @return The listeningPaused.
+     */
+    @java.lang.Override
+    public boolean getListeningPaused() {
+      return listeningPaused_;
+    }
+
+    public static final int GENERATION_FIELD_NUMBER = 3;
+    private long generation_ = 0L;
+    /**
+     * <pre>
+     * &lt;p&gt;ondewo-sip's container-lifetime monotonic counter. Never reset per call. The server applies a level only
+     * when this value is strictly greater than the last applied one.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>uint64 generation = 3;</code>
+     * @return The generation.
+     */
+    @java.lang.Override
+    public long getGeneration() {
+      return generation_;
+    }
+
+    public static final int REASON_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object reason_ = "";
+    /**
+     * <pre>
+     * &lt;p&gt;Bounded reason token for logs and telemetry: &lt;code&gt;operator&lt;/code&gt;, &lt;code&gt;participant&lt;/code&gt;,
+     * &lt;code&gt;takeover&lt;/code&gt; or &lt;code&gt;resync&lt;/code&gt;.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>string reason = 4;</code>
+     * @return The reason.
+     */
+    @java.lang.Override
+    public java.lang.String getReason() {
+      java.lang.Object ref = reason_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        reason_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * &lt;p&gt;Bounded reason token for logs and telemetry: &lt;code&gt;operator&lt;/code&gt;, &lt;code&gt;participant&lt;/code&gt;,
+     * &lt;code&gt;takeover&lt;/code&gt; or &lt;code&gt;resync&lt;/code&gt;.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>string reason = 4;</code>
+     * @return The bytes for reason.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getReasonBytes() {
+      java.lang.Object ref = reason_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        reason_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (botMuted_ != false) {
+        output.writeBool(1, botMuted_);
+      }
+      if (listeningPaused_ != false) {
+        output.writeBool(2, listeningPaused_);
+      }
+      if (generation_ != 0L) {
+        output.writeUInt64(3, generation_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(reason_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, reason_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (botMuted_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, botMuted_);
+      }
+      if (listeningPaused_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, listeningPaused_);
+      }
+      if (generation_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(3, generation_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(reason_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, reason_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof ondewo.csi.Conversation.CallMediaControlLevel)) {
+        return super.equals(obj);
+      }
+      ondewo.csi.Conversation.CallMediaControlLevel other = (ondewo.csi.Conversation.CallMediaControlLevel) obj;
+
+      if (getBotMuted()
+          != other.getBotMuted()) return false;
+      if (getListeningPaused()
+          != other.getListeningPaused()) return false;
+      if (getGeneration()
+          != other.getGeneration()) return false;
+      if (!getReason()
+          .equals(other.getReason())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + BOT_MUTED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getBotMuted());
+      hash = (37 * hash) + LISTENING_PAUSED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getListeningPaused());
+      hash = (37 * hash) + GENERATION_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getGeneration());
+      hash = (37 * hash) + REASON_FIELD_NUMBER;
+      hash = (53 * hash) + getReason().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static ondewo.csi.Conversation.CallMediaControlLevel parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ondewo.csi.Conversation.CallMediaControlLevel parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ondewo.csi.Conversation.CallMediaControlLevel parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ondewo.csi.Conversation.CallMediaControlLevel parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ondewo.csi.Conversation.CallMediaControlLevel parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ondewo.csi.Conversation.CallMediaControlLevel parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ondewo.csi.Conversation.CallMediaControlLevel parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static ondewo.csi.Conversation.CallMediaControlLevel parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static ondewo.csi.Conversation.CallMediaControlLevel parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static ondewo.csi.Conversation.CallMediaControlLevel parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static ondewo.csi.Conversation.CallMediaControlLevel parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static ondewo.csi.Conversation.CallMediaControlLevel parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(ondewo.csi.Conversation.CallMediaControlLevel prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * &lt;p&gt;Per-call operator media control level, sent by ondewo-sip to &lt;code&gt;SetCallMediaControl&lt;/code&gt; and pushed by the
+     * server on the control stream (&lt;code&gt;ControlStreamResponse.media_control&lt;/code&gt;).&lt;/p&gt;
+     *
+     * &lt;p&gt;It always carries the FULL effective level. It is independent of the bot's own mixer mute that ondewo-csi
+     * requests from ondewo-sip with &lt;code&gt;SipMute&lt;/code&gt; / &lt;code&gt;SipUnMute&lt;/code&gt;.&lt;/p&gt;
+     * </pre>
+     *
+     * Protobuf type {@code ondewo.csi.CallMediaControlLevel}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ondewo.csi.CallMediaControlLevel)
+        ondewo.csi.Conversation.CallMediaControlLevelOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ondewo.csi.Conversation.internal_static_ondewo_csi_CallMediaControlLevel_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ondewo.csi.Conversation.internal_static_ondewo_csi_CallMediaControlLevel_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ondewo.csi.Conversation.CallMediaControlLevel.class, ondewo.csi.Conversation.CallMediaControlLevel.Builder.class);
+      }
+
+      // Construct using ondewo.csi.Conversation.CallMediaControlLevel.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        botMuted_ = false;
+        listeningPaused_ = false;
+        generation_ = 0L;
+        reason_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return ondewo.csi.Conversation.internal_static_ondewo_csi_CallMediaControlLevel_descriptor;
+      }
+
+      @java.lang.Override
+      public ondewo.csi.Conversation.CallMediaControlLevel getDefaultInstanceForType() {
+        return ondewo.csi.Conversation.CallMediaControlLevel.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public ondewo.csi.Conversation.CallMediaControlLevel build() {
+        ondewo.csi.Conversation.CallMediaControlLevel result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public ondewo.csi.Conversation.CallMediaControlLevel buildPartial() {
+        ondewo.csi.Conversation.CallMediaControlLevel result = new ondewo.csi.Conversation.CallMediaControlLevel(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(ondewo.csi.Conversation.CallMediaControlLevel result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.botMuted_ = botMuted_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.listeningPaused_ = listeningPaused_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.generation_ = generation_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.reason_ = reason_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof ondewo.csi.Conversation.CallMediaControlLevel) {
+          return mergeFrom((ondewo.csi.Conversation.CallMediaControlLevel)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(ondewo.csi.Conversation.CallMediaControlLevel other) {
+        if (other == ondewo.csi.Conversation.CallMediaControlLevel.getDefaultInstance()) return this;
+        if (other.getBotMuted() != false) {
+          setBotMuted(other.getBotMuted());
+        }
+        if (other.getListeningPaused() != false) {
+          setListeningPaused(other.getListeningPaused());
+        }
+        if (other.getGeneration() != 0L) {
+          setGeneration(other.getGeneration());
+        }
+        if (!other.getReason().isEmpty()) {
+          reason_ = other.reason_;
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                botMuted_ = input.readBool();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                listeningPaused_ = input.readBool();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                generation_ = input.readUInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 34: {
+                reason_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private boolean botMuted_ ;
+      /**
+       * <pre>
+       * &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the bot is muted: no text-to-speech is synthesized for new responses (the NLU turn
+       * still runs), the in-flight utterance is aborted and discarded (never resumed), and soft-timeout fillers,
+       * re-prompts and &lt;code&gt;PLAY_AUDIO&lt;/code&gt; triggers produce no audio.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool bot_muted = 1;</code>
+       * @return The botMuted.
+       */
+      @java.lang.Override
+      public boolean getBotMuted() {
+        return botMuted_;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the bot is muted: no text-to-speech is synthesized for new responses (the NLU turn
+       * still runs), the in-flight utterance is aborted and discarded (never resumed), and soft-timeout fillers,
+       * re-prompts and &lt;code&gt;PLAY_AUDIO&lt;/code&gt; triggers produce no audio.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool bot_muted = 1;</code>
+       * @param value The botMuted to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBotMuted(boolean value) {
+
+        botMuted_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the bot is muted: no text-to-speech is synthesized for new responses (the NLU turn
+       * still runs), the in-flight utterance is aborted and discarded (never resumed), and soft-timeout fillers,
+       * re-prompts and &lt;code&gt;PLAY_AUDIO&lt;/code&gt; triggers produce no audio.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool bot_muted = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBotMuted() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        botMuted_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean listeningPaused_ ;
+      /**
+       * <pre>
+       * &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the bot stops listening: the caller audio sent to speech-to-text is replaced by muted
+       * zero frames at the capture cadence (the stream stays open and its clock stays aligned with the call), S2T
+       * responses are dropped before barge-in adjudication and before NLU, and the turn, soft and silence
+       * timers are suspended (they restart from zero on resume). Blanked audio is never back-filled.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool listening_paused = 2;</code>
+       * @return The listeningPaused.
+       */
+      @java.lang.Override
+      public boolean getListeningPaused() {
+        return listeningPaused_;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the bot stops listening: the caller audio sent to speech-to-text is replaced by muted
+       * zero frames at the capture cadence (the stream stays open and its clock stays aligned with the call), S2T
+       * responses are dropped before barge-in adjudication and before NLU, and the turn, soft and silence
+       * timers are suspended (they restart from zero on resume). Blanked audio is never back-filled.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool listening_paused = 2;</code>
+       * @param value The listeningPaused to set.
+       * @return This builder for chaining.
+       */
+      public Builder setListeningPaused(boolean value) {
+
+        listeningPaused_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, the bot stops listening: the caller audio sent to speech-to-text is replaced by muted
+       * zero frames at the capture cadence (the stream stays open and its clock stays aligned with the call), S2T
+       * responses are dropped before barge-in adjudication and before NLU, and the turn, soft and silence
+       * timers are suspended (they restart from zero on resume). Blanked audio is never back-filled.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool listening_paused = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearListeningPaused() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        listeningPaused_ = false;
+        onChanged();
+        return this;
+      }
+
+      private long generation_ ;
+      /**
+       * <pre>
+       * &lt;p&gt;ondewo-sip's container-lifetime monotonic counter. Never reset per call. The server applies a level only
+       * when this value is strictly greater than the last applied one.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>uint64 generation = 3;</code>
+       * @return The generation.
+       */
+      @java.lang.Override
+      public long getGeneration() {
+        return generation_;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;ondewo-sip's container-lifetime monotonic counter. Never reset per call. The server applies a level only
+       * when this value is strictly greater than the last applied one.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>uint64 generation = 3;</code>
+       * @param value The generation to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGeneration(long value) {
+
+        generation_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;ondewo-sip's container-lifetime monotonic counter. Never reset per call. The server applies a level only
+       * when this value is strictly greater than the last applied one.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>uint64 generation = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearGeneration() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        generation_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object reason_ = "";
+      /**
+       * <pre>
+       * &lt;p&gt;Bounded reason token for logs and telemetry: &lt;code&gt;operator&lt;/code&gt;, &lt;code&gt;participant&lt;/code&gt;,
+       * &lt;code&gt;takeover&lt;/code&gt; or &lt;code&gt;resync&lt;/code&gt;.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>string reason = 4;</code>
+       * @return The reason.
+       */
+      public java.lang.String getReason() {
+        java.lang.Object ref = reason_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          reason_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Bounded reason token for logs and telemetry: &lt;code&gt;operator&lt;/code&gt;, &lt;code&gt;participant&lt;/code&gt;,
+       * &lt;code&gt;takeover&lt;/code&gt; or &lt;code&gt;resync&lt;/code&gt;.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>string reason = 4;</code>
+       * @return The bytes for reason.
+       */
+      public com.google.protobuf.ByteString
+          getReasonBytes() {
+        java.lang.Object ref = reason_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          reason_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Bounded reason token for logs and telemetry: &lt;code&gt;operator&lt;/code&gt;, &lt;code&gt;participant&lt;/code&gt;,
+       * &lt;code&gt;takeover&lt;/code&gt; or &lt;code&gt;resync&lt;/code&gt;.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>string reason = 4;</code>
+       * @param value The reason to set.
+       * @return This builder for chaining.
+       */
+      public Builder setReason(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        reason_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Bounded reason token for logs and telemetry: &lt;code&gt;operator&lt;/code&gt;, &lt;code&gt;participant&lt;/code&gt;,
+       * &lt;code&gt;takeover&lt;/code&gt; or &lt;code&gt;resync&lt;/code&gt;.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>string reason = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearReason() {
+        reason_ = getDefaultInstance().getReason();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Bounded reason token for logs and telemetry: &lt;code&gt;operator&lt;/code&gt;, &lt;code&gt;participant&lt;/code&gt;,
+       * &lt;code&gt;takeover&lt;/code&gt; or &lt;code&gt;resync&lt;/code&gt;.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>string reason = 4;</code>
+       * @param value The bytes for reason to set.
+       * @return This builder for chaining.
+       */
+      public Builder setReasonBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        reason_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ondewo.csi.CallMediaControlLevel)
+    }
+
+    // @@protoc_insertion_point(class_scope:ondewo.csi.CallMediaControlLevel)
+    private static final ondewo.csi.Conversation.CallMediaControlLevel DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new ondewo.csi.Conversation.CallMediaControlLevel();
+    }
+
+    public static ondewo.csi.Conversation.CallMediaControlLevel getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<CallMediaControlLevel>
+        PARSER = new com.google.protobuf.AbstractParser<CallMediaControlLevel>() {
+      @java.lang.Override
+      public CallMediaControlLevel parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<CallMediaControlLevel> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CallMediaControlLevel> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public ondewo.csi.Conversation.CallMediaControlLevel getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SetCallMediaControlResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ondewo.csi.SetCallMediaControlResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+     * @return Whether the applied field is set.
+     */
+    boolean hasApplied();
+    /**
+     * <pre>
+     * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+     * @return The applied.
+     */
+    ondewo.csi.Conversation.CallMediaControlLevel getApplied();
+    /**
+     * <pre>
+     * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+     */
+    ondewo.csi.Conversation.CallMediaControlLevelOrBuilder getAppliedOrBuilder();
+
+    /**
+     * <pre>
+     * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; if the effective level changed.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>bool changed = 2;</code>
+     * @return The changed.
+     */
+    boolean getChanged();
+
+    /**
+     * <pre>
+     * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; if the request's generation was not greater than the last applied generation. The
+     * request was ignored.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>bool stale = 3;</code>
+     * @return The stale.
+     */
+    boolean getStale();
+
+    /**
+     * <pre>
+     * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; while an utterance is still draining to the caller.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>bool bot_playback_in_flight = 4;</code>
+     * @return The botPlaybackInFlight.
+     */
+    boolean getBotPlaybackInFlight();
+
+    /**
+     * <pre>
+     * &lt;p&gt;Empty when the level was applied. Otherwise a stable refusal token: &lt;code&gt;amd-in-progress&lt;/code&gt;
+     * (&lt;code&gt;listening_paused&lt;/code&gt; refused during the answering-machine-detection window).&lt;/p&gt;
+     * </pre>
+     *
+     * <code>string refusal_reason = 5;</code>
+     * @return The refusalReason.
+     */
+    java.lang.String getRefusalReason();
+    /**
+     * <pre>
+     * &lt;p&gt;Empty when the level was applied. Otherwise a stable refusal token: &lt;code&gt;amd-in-progress&lt;/code&gt;
+     * (&lt;code&gt;listening_paused&lt;/code&gt; refused during the answering-machine-detection window).&lt;/p&gt;
+     * </pre>
+     *
+     * <code>string refusal_reason = 5;</code>
+     * @return The bytes for refusalReason.
+     */
+    com.google.protobuf.ByteString
+        getRefusalReasonBytes();
+  }
+  /**
+   * <pre>
+   * &lt;p&gt;Response of &lt;code&gt;SetCallMediaControl&lt;/code&gt;.&lt;/p&gt;
+   * </pre>
+   *
+   * Protobuf type {@code ondewo.csi.SetCallMediaControlResponse}
+   */
+  public static final class SetCallMediaControlResponse extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ondewo.csi.SetCallMediaControlResponse)
+      SetCallMediaControlResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 32,
+        /* patch= */ 0,
+        /* suffix= */ "",
+        SetCallMediaControlResponse.class.getName());
+    }
+    // Use SetCallMediaControlResponse.newBuilder() to construct.
+    private SetCallMediaControlResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SetCallMediaControlResponse() {
+      refusalReason_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return ondewo.csi.Conversation.internal_static_ondewo_csi_SetCallMediaControlResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return ondewo.csi.Conversation.internal_static_ondewo_csi_SetCallMediaControlResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              ondewo.csi.Conversation.SetCallMediaControlResponse.class, ondewo.csi.Conversation.SetCallMediaControlResponse.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int APPLIED_FIELD_NUMBER = 1;
+    private ondewo.csi.Conversation.CallMediaControlLevel applied_;
+    /**
+     * <pre>
+     * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+     * @return Whether the applied field is set.
+     */
+    @java.lang.Override
+    public boolean hasApplied() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+     * @return The applied.
+     */
+    @java.lang.Override
+    public ondewo.csi.Conversation.CallMediaControlLevel getApplied() {
+      return applied_ == null ? ondewo.csi.Conversation.CallMediaControlLevel.getDefaultInstance() : applied_;
+    }
+    /**
+     * <pre>
+     * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+     */
+    @java.lang.Override
+    public ondewo.csi.Conversation.CallMediaControlLevelOrBuilder getAppliedOrBuilder() {
+      return applied_ == null ? ondewo.csi.Conversation.CallMediaControlLevel.getDefaultInstance() : applied_;
+    }
+
+    public static final int CHANGED_FIELD_NUMBER = 2;
+    private boolean changed_ = false;
+    /**
+     * <pre>
+     * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; if the effective level changed.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>bool changed = 2;</code>
+     * @return The changed.
+     */
+    @java.lang.Override
+    public boolean getChanged() {
+      return changed_;
+    }
+
+    public static final int STALE_FIELD_NUMBER = 3;
+    private boolean stale_ = false;
+    /**
+     * <pre>
+     * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; if the request's generation was not greater than the last applied generation. The
+     * request was ignored.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>bool stale = 3;</code>
+     * @return The stale.
+     */
+    @java.lang.Override
+    public boolean getStale() {
+      return stale_;
+    }
+
+    public static final int BOT_PLAYBACK_IN_FLIGHT_FIELD_NUMBER = 4;
+    private boolean botPlaybackInFlight_ = false;
+    /**
+     * <pre>
+     * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; while an utterance is still draining to the caller.&lt;/p&gt;
+     * </pre>
+     *
+     * <code>bool bot_playback_in_flight = 4;</code>
+     * @return The botPlaybackInFlight.
+     */
+    @java.lang.Override
+    public boolean getBotPlaybackInFlight() {
+      return botPlaybackInFlight_;
+    }
+
+    public static final int REFUSAL_REASON_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object refusalReason_ = "";
+    /**
+     * <pre>
+     * &lt;p&gt;Empty when the level was applied. Otherwise a stable refusal token: &lt;code&gt;amd-in-progress&lt;/code&gt;
+     * (&lt;code&gt;listening_paused&lt;/code&gt; refused during the answering-machine-detection window).&lt;/p&gt;
+     * </pre>
+     *
+     * <code>string refusal_reason = 5;</code>
+     * @return The refusalReason.
+     */
+    @java.lang.Override
+    public java.lang.String getRefusalReason() {
+      java.lang.Object ref = refusalReason_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        refusalReason_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * &lt;p&gt;Empty when the level was applied. Otherwise a stable refusal token: &lt;code&gt;amd-in-progress&lt;/code&gt;
+     * (&lt;code&gt;listening_paused&lt;/code&gt; refused during the answering-machine-detection window).&lt;/p&gt;
+     * </pre>
+     *
+     * <code>string refusal_reason = 5;</code>
+     * @return The bytes for refusalReason.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRefusalReasonBytes() {
+      java.lang.Object ref = refusalReason_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        refusalReason_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(1, getApplied());
+      }
+      if (changed_ != false) {
+        output.writeBool(2, changed_);
+      }
+      if (stale_ != false) {
+        output.writeBool(3, stale_);
+      }
+      if (botPlaybackInFlight_ != false) {
+        output.writeBool(4, botPlaybackInFlight_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(refusalReason_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 5, refusalReason_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getApplied());
+      }
+      if (changed_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, changed_);
+      }
+      if (stale_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, stale_);
+      }
+      if (botPlaybackInFlight_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, botPlaybackInFlight_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(refusalReason_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, refusalReason_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof ondewo.csi.Conversation.SetCallMediaControlResponse)) {
+        return super.equals(obj);
+      }
+      ondewo.csi.Conversation.SetCallMediaControlResponse other = (ondewo.csi.Conversation.SetCallMediaControlResponse) obj;
+
+      if (hasApplied() != other.hasApplied()) return false;
+      if (hasApplied()) {
+        if (!getApplied()
+            .equals(other.getApplied())) return false;
+      }
+      if (getChanged()
+          != other.getChanged()) return false;
+      if (getStale()
+          != other.getStale()) return false;
+      if (getBotPlaybackInFlight()
+          != other.getBotPlaybackInFlight()) return false;
+      if (!getRefusalReason()
+          .equals(other.getRefusalReason())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasApplied()) {
+        hash = (37 * hash) + APPLIED_FIELD_NUMBER;
+        hash = (53 * hash) + getApplied().hashCode();
+      }
+      hash = (37 * hash) + CHANGED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getChanged());
+      hash = (37 * hash) + STALE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getStale());
+      hash = (37 * hash) + BOT_PLAYBACK_IN_FLIGHT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getBotPlaybackInFlight());
+      hash = (37 * hash) + REFUSAL_REASON_FIELD_NUMBER;
+      hash = (53 * hash) + getRefusalReason().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static ondewo.csi.Conversation.SetCallMediaControlResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ondewo.csi.Conversation.SetCallMediaControlResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ondewo.csi.Conversation.SetCallMediaControlResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ondewo.csi.Conversation.SetCallMediaControlResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ondewo.csi.Conversation.SetCallMediaControlResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static ondewo.csi.Conversation.SetCallMediaControlResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static ondewo.csi.Conversation.SetCallMediaControlResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static ondewo.csi.Conversation.SetCallMediaControlResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static ondewo.csi.Conversation.SetCallMediaControlResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static ondewo.csi.Conversation.SetCallMediaControlResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static ondewo.csi.Conversation.SetCallMediaControlResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static ondewo.csi.Conversation.SetCallMediaControlResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(ondewo.csi.Conversation.SetCallMediaControlResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * &lt;p&gt;Response of &lt;code&gt;SetCallMediaControl&lt;/code&gt;.&lt;/p&gt;
+     * </pre>
+     *
+     * Protobuf type {@code ondewo.csi.SetCallMediaControlResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ondewo.csi.SetCallMediaControlResponse)
+        ondewo.csi.Conversation.SetCallMediaControlResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return ondewo.csi.Conversation.internal_static_ondewo_csi_SetCallMediaControlResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return ondewo.csi.Conversation.internal_static_ondewo_csi_SetCallMediaControlResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                ondewo.csi.Conversation.SetCallMediaControlResponse.class, ondewo.csi.Conversation.SetCallMediaControlResponse.Builder.class);
+      }
+
+      // Construct using ondewo.csi.Conversation.SetCallMediaControlResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage
+                .alwaysUseFieldBuilders) {
+          internalGetAppliedFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        applied_ = null;
+        if (appliedBuilder_ != null) {
+          appliedBuilder_.dispose();
+          appliedBuilder_ = null;
+        }
+        changed_ = false;
+        stale_ = false;
+        botPlaybackInFlight_ = false;
+        refusalReason_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return ondewo.csi.Conversation.internal_static_ondewo_csi_SetCallMediaControlResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public ondewo.csi.Conversation.SetCallMediaControlResponse getDefaultInstanceForType() {
+        return ondewo.csi.Conversation.SetCallMediaControlResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public ondewo.csi.Conversation.SetCallMediaControlResponse build() {
+        ondewo.csi.Conversation.SetCallMediaControlResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public ondewo.csi.Conversation.SetCallMediaControlResponse buildPartial() {
+        ondewo.csi.Conversation.SetCallMediaControlResponse result = new ondewo.csi.Conversation.SetCallMediaControlResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(ondewo.csi.Conversation.SetCallMediaControlResponse result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.applied_ = appliedBuilder_ == null
+              ? applied_
+              : appliedBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.changed_ = changed_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.stale_ = stale_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.botPlaybackInFlight_ = botPlaybackInFlight_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.refusalReason_ = refusalReason_;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof ondewo.csi.Conversation.SetCallMediaControlResponse) {
+          return mergeFrom((ondewo.csi.Conversation.SetCallMediaControlResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(ondewo.csi.Conversation.SetCallMediaControlResponse other) {
+        if (other == ondewo.csi.Conversation.SetCallMediaControlResponse.getDefaultInstance()) return this;
+        if (other.hasApplied()) {
+          mergeApplied(other.getApplied());
+        }
+        if (other.getChanged() != false) {
+          setChanged(other.getChanged());
+        }
+        if (other.getStale() != false) {
+          setStale(other.getStale());
+        }
+        if (other.getBotPlaybackInFlight() != false) {
+          setBotPlaybackInFlight(other.getBotPlaybackInFlight());
+        }
+        if (!other.getRefusalReason().isEmpty()) {
+          refusalReason_ = other.refusalReason_;
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    internalGetAppliedFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 16: {
+                changed_ = input.readBool();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                stale_ = input.readBool();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 32: {
+                botPlaybackInFlight_ = input.readBool();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              case 42: {
+                refusalReason_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private ondewo.csi.Conversation.CallMediaControlLevel applied_;
+      private com.google.protobuf.SingleFieldBuilder<
+          ondewo.csi.Conversation.CallMediaControlLevel, ondewo.csi.Conversation.CallMediaControlLevel.Builder, ondewo.csi.Conversation.CallMediaControlLevelOrBuilder> appliedBuilder_;
+      /**
+       * <pre>
+       * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+       * @return Whether the applied field is set.
+       */
+      public boolean hasApplied() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+       * @return The applied.
+       */
+      public ondewo.csi.Conversation.CallMediaControlLevel getApplied() {
+        if (appliedBuilder_ == null) {
+          return applied_ == null ? ondewo.csi.Conversation.CallMediaControlLevel.getDefaultInstance() : applied_;
+        } else {
+          return appliedBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+       */
+      public Builder setApplied(ondewo.csi.Conversation.CallMediaControlLevel value) {
+        if (appliedBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          applied_ = value;
+        } else {
+          appliedBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+       */
+      public Builder setApplied(
+          ondewo.csi.Conversation.CallMediaControlLevel.Builder builderForValue) {
+        if (appliedBuilder_ == null) {
+          applied_ = builderForValue.build();
+        } else {
+          appliedBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+       */
+      public Builder mergeApplied(ondewo.csi.Conversation.CallMediaControlLevel value) {
+        if (appliedBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0) &&
+            applied_ != null &&
+            applied_ != ondewo.csi.Conversation.CallMediaControlLevel.getDefaultInstance()) {
+            getAppliedBuilder().mergeFrom(value);
+          } else {
+            applied_ = value;
+          }
+        } else {
+          appliedBuilder_.mergeFrom(value);
+        }
+        if (applied_ != null) {
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+       */
+      public Builder clearApplied() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        applied_ = null;
+        if (appliedBuilder_ != null) {
+          appliedBuilder_.dispose();
+          appliedBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+       */
+      public ondewo.csi.Conversation.CallMediaControlLevel.Builder getAppliedBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return internalGetAppliedFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+       */
+      public ondewo.csi.Conversation.CallMediaControlLevelOrBuilder getAppliedOrBuilder() {
+        if (appliedBuilder_ != null) {
+          return appliedBuilder_.getMessageOrBuilder();
+        } else {
+          return applied_ == null ?
+              ondewo.csi.Conversation.CallMediaControlLevel.getDefaultInstance() : applied_;
+        }
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;The level the server holds after this request.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>.ondewo.csi.CallMediaControlLevel applied = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          ondewo.csi.Conversation.CallMediaControlLevel, ondewo.csi.Conversation.CallMediaControlLevel.Builder, ondewo.csi.Conversation.CallMediaControlLevelOrBuilder> 
+          internalGetAppliedFieldBuilder() {
+        if (appliedBuilder_ == null) {
+          appliedBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              ondewo.csi.Conversation.CallMediaControlLevel, ondewo.csi.Conversation.CallMediaControlLevel.Builder, ondewo.csi.Conversation.CallMediaControlLevelOrBuilder>(
+                  getApplied(),
+                  getParentForChildren(),
+                  isClean());
+          applied_ = null;
+        }
+        return appliedBuilder_;
+      }
+
+      private boolean changed_ ;
+      /**
+       * <pre>
+       * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; if the effective level changed.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool changed = 2;</code>
+       * @return The changed.
+       */
+      @java.lang.Override
+      public boolean getChanged() {
+        return changed_;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; if the effective level changed.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool changed = 2;</code>
+       * @param value The changed to set.
+       * @return This builder for chaining.
+       */
+      public Builder setChanged(boolean value) {
+
+        changed_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; if the effective level changed.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool changed = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearChanged() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        changed_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean stale_ ;
+      /**
+       * <pre>
+       * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; if the request's generation was not greater than the last applied generation. The
+       * request was ignored.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool stale = 3;</code>
+       * @return The stale.
+       */
+      @java.lang.Override
+      public boolean getStale() {
+        return stale_;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; if the request's generation was not greater than the last applied generation. The
+       * request was ignored.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool stale = 3;</code>
+       * @param value The stale to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStale(boolean value) {
+
+        stale_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; if the request's generation was not greater than the last applied generation. The
+       * request was ignored.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool stale = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStale() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        stale_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean botPlaybackInFlight_ ;
+      /**
+       * <pre>
+       * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; while an utterance is still draining to the caller.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool bot_playback_in_flight = 4;</code>
+       * @return The botPlaybackInFlight.
+       */
+      @java.lang.Override
+      public boolean getBotPlaybackInFlight() {
+        return botPlaybackInFlight_;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; while an utterance is still draining to the caller.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool bot_playback_in_flight = 4;</code>
+       * @param value The botPlaybackInFlight to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBotPlaybackInFlight(boolean value) {
+
+        botPlaybackInFlight_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;&lt;code&gt;true&lt;/code&gt; while an utterance is still draining to the caller.&lt;/p&gt;
+       * </pre>
+       *
+       * <code>bool bot_playback_in_flight = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBotPlaybackInFlight() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        botPlaybackInFlight_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object refusalReason_ = "";
+      /**
+       * <pre>
+       * &lt;p&gt;Empty when the level was applied. Otherwise a stable refusal token: &lt;code&gt;amd-in-progress&lt;/code&gt;
+       * (&lt;code&gt;listening_paused&lt;/code&gt; refused during the answering-machine-detection window).&lt;/p&gt;
+       * </pre>
+       *
+       * <code>string refusal_reason = 5;</code>
+       * @return The refusalReason.
+       */
+      public java.lang.String getRefusalReason() {
+        java.lang.Object ref = refusalReason_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          refusalReason_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Empty when the level was applied. Otherwise a stable refusal token: &lt;code&gt;amd-in-progress&lt;/code&gt;
+       * (&lt;code&gt;listening_paused&lt;/code&gt; refused during the answering-machine-detection window).&lt;/p&gt;
+       * </pre>
+       *
+       * <code>string refusal_reason = 5;</code>
+       * @return The bytes for refusalReason.
+       */
+      public com.google.protobuf.ByteString
+          getRefusalReasonBytes() {
+        java.lang.Object ref = refusalReason_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          refusalReason_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Empty when the level was applied. Otherwise a stable refusal token: &lt;code&gt;amd-in-progress&lt;/code&gt;
+       * (&lt;code&gt;listening_paused&lt;/code&gt; refused during the answering-machine-detection window).&lt;/p&gt;
+       * </pre>
+       *
+       * <code>string refusal_reason = 5;</code>
+       * @param value The refusalReason to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRefusalReason(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        refusalReason_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Empty when the level was applied. Otherwise a stable refusal token: &lt;code&gt;amd-in-progress&lt;/code&gt;
+       * (&lt;code&gt;listening_paused&lt;/code&gt; refused during the answering-machine-detection window).&lt;/p&gt;
+       * </pre>
+       *
+       * <code>string refusal_reason = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRefusalReason() {
+        refusalReason_ = getDefaultInstance().getRefusalReason();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * &lt;p&gt;Empty when the level was applied. Otherwise a stable refusal token: &lt;code&gt;amd-in-progress&lt;/code&gt;
+       * (&lt;code&gt;listening_paused&lt;/code&gt; refused during the answering-machine-detection window).&lt;/p&gt;
+       * </pre>
+       *
+       * <code>string refusal_reason = 5;</code>
+       * @param value The bytes for refusalReason to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRefusalReasonBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        refusalReason_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ondewo.csi.SetCallMediaControlResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:ondewo.csi.SetCallMediaControlResponse)
+    private static final ondewo.csi.Conversation.SetCallMediaControlResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new ondewo.csi.Conversation.SetCallMediaControlResponse();
+    }
+
+    public static ondewo.csi.Conversation.SetCallMediaControlResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SetCallMediaControlResponse>
+        PARSER = new com.google.protobuf.AbstractParser<SetCallMediaControlResponse>() {
+      @java.lang.Override
+      public SetCallMediaControlResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<SetCallMediaControlResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SetCallMediaControlResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public ondewo.csi.Conversation.SetCallMediaControlResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -16676,6 +19061,16 @@ public final class Conversation {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ondewo_csi_SetControlStatusResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ondewo_csi_CallMediaControlLevel_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ondewo_csi_CallMediaControlLevel_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ondewo_csi_SetCallMediaControlResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ondewo_csi_SetCallMediaControlResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ondewo_csi_Condition_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -16734,71 +19129,82 @@ public final class Conversation {
       "atus\030\001 \001(\0132\022.google.rpc.Status\022&\n\nnlu_st" +
       "atus\030\002 \001(\0132\022.google.rpc.Status\022&\n\nt2s_st" +
       "atus\030\003 \001(\0132\022.google.rpc.Status\"\026\n\024Contro" +
-      "lStreamRequest\"Y\n\025ControlStreamResponse\022" +
-      "1\n\016control_status\030\001 \001(\0162\031.ondewo.csi.Con" +
-      "trolStatus\022\r\n\005epoch\030\002 \001(\004\"L\n\027SetControlS" +
-      "tatusRequest\0221\n\016control_status\030\001 \001(\0162\031.o" +
-      "ndewo.csi.ControlStatus\"\210\001\n\030SetControlSt" +
-      "atusResponse\0225\n\022old_control_status\030\001 \001(\016" +
-      "2\031.ondewo.csi.ControlStatus\0225\n\022new_contr" +
-      "ol_status\030\002 \001(\0162\031.ondewo.csi.ControlStat" +
-      "us\"C\n\tCondition\022\'\n\004type\030\001 \001(\0162\031.ondewo.c" +
-      "si.ConditionType\022\r\n\005value\030\002 \001(\t\"\373\002\n\037Cont" +
-      "rolMessageServiceParameters\022/\n\nt2s_confi" +
-      "g\030\001 \001(\0132\031.ondewo.t2s.RequestConfigH\000\0229\n\n" +
-      "s2t_config\030\002 \001(\0132#.ondewo.s2t.Transcribe" +
-      "RequestConfigH\000\022\023\n\013transfer_id\030\003 \001(\t\022\021\n\t" +
-      "wav_files\030\004 \003(\014\022\014\n\004text\030\005 \001(\t\022$\n\007context" +
-      "\030\006 \001(\0132\023.ondewo.nlu.Context\022\022\n\nsession_i" +
-      "d\030\007 \001(\t\022\024\n\014context_name\030\010 \001(\t\022.\n\017conditi" +
-      "on_start\030\t \001(\0132\025.ondewo.csi.Condition\022,\n" +
-      "\rcondition_end\030\n \001(\0132\025.ondewo.csi.Condit" +
-      "ionB\010\n\006config\"\302\001\n\016ControlMessage\0226\n\007serv" +
-      "ice\030\001 \001(\0162%.ondewo.csi.ControlMessageSer" +
-      "viceName\0227\n\006method\030\002 \001(\0162\'.ondewo.csi.Co" +
-      "ntrolMessageServiceMethod\022?\n\nparameters\030" +
-      "\003 \001(\0132+.ondewo.csi.ControlMessageService" +
-      "Parameters*\267\001\n\rControlStatus\022\006\n\002OK\020\000\022\022\n\016" +
-      "EMERGENCY_STOP\020\001\022\027\n\023VAD_START_OF_SPEECH\020" +
-      "\002\022\014\n\010BARGE_IN\020\003\022\023\n\017RESUME_PLAYBACK\020\004\022\025\n\021" +
-      "DISCARD_REMAINDER\020\005\022\024\n\020PLAYBACK_RESUMED\020" +
-      "\006\022\021\n\rPLAYBACK_DONE\020\007\022\016\n\nCALL_ENDED\020\010*\240\001\n" +
-      "\031ControlMessageServiceName\022\017\n\013UNKNOWNNAM" +
-      "E\020\000\022\016\n\nondewo_s2t\020\001\022\016\n\nondewo_t2s\020\002\022\016\n\no" +
-      "ndewo_nlu\020\003\022\016\n\nondewo_sip\020\004\022\017\n\013ondewo_vt" +
-      "si\020\005\022\016\n\nondewo_csi\020\006\022\021\n\rondewo_survey\020\007*" +
-      "\205\003\n\033ControlMessageServiceMethod\022\021\n\rUNKNO" +
-      "WNMETHOD\020\000\022\021\n\rupdate_config\020\001\022\017\n\013undo_co" +
-      "nfig\020\002\022\020\n\014reset_config\020\003\022\014\n\010end_call\020\004\022\021" +
-      "\n\rtransfer_call\020\005\022\022\n\016play_wav_files\020\006\022\r\n" +
-      "\tplay_text\020\007\022\010\n\004mute\020\010\022\013\n\007un_mute\020\t\022\035\n\031s" +
-      "top_all_control_messages\020\n\022\017\n\013train_agen" +
-      "t\020\013\022\026\n\022cancel_train_agent\020\014\022\022\n\016delete_se" +
-      "ssion\020\r\022\027\n\023delete_all_contexts\020\016\022\022\n\016crea" +
-      "te_context\020\017\022\022\n\016update_context\020\020\022\022\n\016dele" +
-      "te_context\020\021\022\021\n\rdetect_intent\020\022*\\\n\rCondi" +
-      "tionType\022\016\n\nUNKNOWTYPE\020\000\022\r\n\timmediate\020\001\022" +
-      "\014\n\010duration\020\002\022\014\n\010datetime\020\003\022\020\n\014interacti" +
-      "ons\020\0042\372\005\n\rConversations\022F\n\021CreateS2sPipe" +
-      "line\022\027.ondewo.csi.S2sPipeline\032\026.google.p" +
-      "rotobuf.Empty\"\000\022F\n\016GetS2sPipeline\022\031.onde" +
-      "wo.csi.S2sPipelineId\032\027.ondewo.csi.S2sPip" +
-      "eline\"\000\022F\n\021UpdateS2sPipeline\022\027.ondewo.cs" +
-      "i.S2sPipeline\032\026.google.protobuf.Empty\"\000\022" +
-      "H\n\021DeleteS2sPipeline\022\031.ondewo.csi.S2sPip" +
-      "elineId\032\026.google.protobuf.Empty\"\000\022_\n\020Lis" +
-      "tS2sPipelines\022#.ondewo.csi.ListS2sPipeli" +
-      "nesRequest\032$.ondewo.csi.ListS2sPipelines" +
-      "Response\"\000\022N\n\tS2sStream\022\034.ondewo.csi.S2s" +
-      "StreamRequest\032\035.ondewo.csi.S2sStreamResp" +
-      "onse\"\000(\0010\001\022X\n\023CheckUpstreamHealth\022\026.goog" +
-      "le.protobuf.Empty\032\'.ondewo.csi.CheckUpst" +
-      "reamHealthResponse\"\000\022[\n\020GetControlStream" +
-      "\022 .ondewo.csi.ControlStreamRequest\032!.ond" +
-      "ewo.csi.ControlStreamResponse\"\0000\001\022_\n\020Set" +
-      "ControlStatus\022#.ondewo.csi.SetControlSta" +
-      "tusRequest\032$.ondewo.csi.SetControlStatus" +
-      "Response\"\000b\006proto3"
+      "lStreamRequest\"\223\001\n\025ControlStreamResponse" +
+      "\0221\n\016control_status\030\001 \001(\0162\031.ondewo.csi.Co" +
+      "ntrolStatus\022\r\n\005epoch\030\002 \001(\004\0228\n\rmedia_cont" +
+      "rol\030\003 \001(\0132!.ondewo.csi.CallMediaControlL" +
+      "evel\"L\n\027SetControlStatusRequest\0221\n\016contr" +
+      "ol_status\030\001 \001(\0162\031.ondewo.csi.ControlStat" +
+      "us\"\210\001\n\030SetControlStatusResponse\0225\n\022old_c" +
+      "ontrol_status\030\001 \001(\0162\031.ondewo.csi.Control" +
+      "Status\0225\n\022new_control_status\030\002 \001(\0162\031.ond" +
+      "ewo.csi.ControlStatus\"h\n\025CallMediaContro" +
+      "lLevel\022\021\n\tbot_muted\030\001 \001(\010\022\030\n\020listening_p" +
+      "aused\030\002 \001(\010\022\022\n\ngeneration\030\003 \001(\004\022\016\n\006reaso" +
+      "n\030\004 \001(\t\"\251\001\n\033SetCallMediaControlResponse\022" +
+      "2\n\007applied\030\001 \001(\0132!.ondewo.csi.CallMediaC" +
+      "ontrolLevel\022\017\n\007changed\030\002 \001(\010\022\r\n\005stale\030\003 " +
+      "\001(\010\022\036\n\026bot_playback_in_flight\030\004 \001(\010\022\026\n\016r" +
+      "efusal_reason\030\005 \001(\t\"C\n\tCondition\022\'\n\004type" +
+      "\030\001 \001(\0162\031.ondewo.csi.ConditionType\022\r\n\005val" +
+      "ue\030\002 \001(\t\"\373\002\n\037ControlMessageServiceParame" +
+      "ters\022/\n\nt2s_config\030\001 \001(\0132\031.ondewo.t2s.Re" +
+      "questConfigH\000\0229\n\ns2t_config\030\002 \001(\0132#.onde" +
+      "wo.s2t.TranscribeRequestConfigH\000\022\023\n\013tran" +
+      "sfer_id\030\003 \001(\t\022\021\n\twav_files\030\004 \003(\014\022\014\n\004text" +
+      "\030\005 \001(\t\022$\n\007context\030\006 \001(\0132\023.ondewo.nlu.Con" +
+      "text\022\022\n\nsession_id\030\007 \001(\t\022\024\n\014context_name" +
+      "\030\010 \001(\t\022.\n\017condition_start\030\t \001(\0132\025.ondewo" +
+      ".csi.Condition\022,\n\rcondition_end\030\n \001(\0132\025." +
+      "ondewo.csi.ConditionB\010\n\006config\"\302\001\n\016Contr" +
+      "olMessage\0226\n\007service\030\001 \001(\0162%.ondewo.csi." +
+      "ControlMessageServiceName\0227\n\006method\030\002 \001(" +
+      "\0162\'.ondewo.csi.ControlMessageServiceMeth" +
+      "od\022?\n\nparameters\030\003 \001(\0132+.ondewo.csi.Cont" +
+      "rolMessageServiceParameters*\267\001\n\rControlS" +
+      "tatus\022\006\n\002OK\020\000\022\022\n\016EMERGENCY_STOP\020\001\022\027\n\023VAD" +
+      "_START_OF_SPEECH\020\002\022\014\n\010BARGE_IN\020\003\022\023\n\017RESU" +
+      "ME_PLAYBACK\020\004\022\025\n\021DISCARD_REMAINDER\020\005\022\024\n\020" +
+      "PLAYBACK_RESUMED\020\006\022\021\n\rPLAYBACK_DONE\020\007\022\016\n" +
+      "\nCALL_ENDED\020\010*\240\001\n\031ControlMessageServiceN" +
+      "ame\022\017\n\013UNKNOWNNAME\020\000\022\016\n\nondewo_s2t\020\001\022\016\n\n" +
+      "ondewo_t2s\020\002\022\016\n\nondewo_nlu\020\003\022\016\n\nondewo_s" +
+      "ip\020\004\022\017\n\013ondewo_vtsi\020\005\022\016\n\nondewo_csi\020\006\022\021\n" +
+      "\rondewo_survey\020\007*\205\003\n\033ControlMessageServi" +
+      "ceMethod\022\021\n\rUNKNOWNMETHOD\020\000\022\021\n\rupdate_co" +
+      "nfig\020\001\022\017\n\013undo_config\020\002\022\020\n\014reset_config\020" +
+      "\003\022\014\n\010end_call\020\004\022\021\n\rtransfer_call\020\005\022\022\n\016pl" +
+      "ay_wav_files\020\006\022\r\n\tplay_text\020\007\022\010\n\004mute\020\010\022" +
+      "\013\n\007un_mute\020\t\022\035\n\031stop_all_control_message" +
+      "s\020\n\022\017\n\013train_agent\020\013\022\026\n\022cancel_train_age" +
+      "nt\020\014\022\022\n\016delete_session\020\r\022\027\n\023delete_all_c" +
+      "ontexts\020\016\022\022\n\016create_context\020\017\022\022\n\016update_" +
+      "context\020\020\022\022\n\016delete_context\020\021\022\021\n\rdetect_" +
+      "intent\020\022*\\\n\rConditionType\022\016\n\nUNKNOWTYPE\020" +
+      "\000\022\r\n\timmediate\020\001\022\014\n\010duration\020\002\022\014\n\010dateti" +
+      "me\020\003\022\020\n\014interactions\020\0042\337\006\n\rConversations" +
+      "\022F\n\021CreateS2sPipeline\022\027.ondewo.csi.S2sPi" +
+      "peline\032\026.google.protobuf.Empty\"\000\022F\n\016GetS" +
+      "2sPipeline\022\031.ondewo.csi.S2sPipelineId\032\027." +
+      "ondewo.csi.S2sPipeline\"\000\022F\n\021UpdateS2sPip" +
+      "eline\022\027.ondewo.csi.S2sPipeline\032\026.google." +
+      "protobuf.Empty\"\000\022H\n\021DeleteS2sPipeline\022\031." +
+      "ondewo.csi.S2sPipelineId\032\026.google.protob" +
+      "uf.Empty\"\000\022_\n\020ListS2sPipelines\022#.ondewo." +
+      "csi.ListS2sPipelinesRequest\032$.ondewo.csi" +
+      ".ListS2sPipelinesResponse\"\000\022N\n\tS2sStream" +
+      "\022\034.ondewo.csi.S2sStreamRequest\032\035.ondewo." +
+      "csi.S2sStreamResponse\"\000(\0010\001\022X\n\023CheckUpst" +
+      "reamHealth\022\026.google.protobuf.Empty\032\'.ond" +
+      "ewo.csi.CheckUpstreamHealthResponse\"\000\022[\n" +
+      "\020GetControlStream\022 .ondewo.csi.ControlSt" +
+      "reamRequest\032!.ondewo.csi.ControlStreamRe" +
+      "sponse\"\0000\001\022_\n\020SetControlStatus\022#.ondewo." +
+      "csi.SetControlStatusRequest\032$.ondewo.csi" +
+      ".SetControlStatusResponse\"\000\022c\n\023SetCallMe" +
+      "diaControl\022!.ondewo.csi.CallMediaControl" +
+      "Level\032\'.ondewo.csi.SetCallMediaControlRe" +
+      "sponse\"\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -16872,7 +19278,7 @@ public final class Conversation {
     internal_static_ondewo_csi_ControlStreamResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ondewo_csi_ControlStreamResponse_descriptor,
-        new java.lang.String[] { "ControlStatus", "Epoch", });
+        new java.lang.String[] { "ControlStatus", "Epoch", "MediaControl", });
     internal_static_ondewo_csi_SetControlStatusRequest_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_ondewo_csi_SetControlStatusRequest_fieldAccessorTable = new
@@ -16885,20 +19291,32 @@ public final class Conversation {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ondewo_csi_SetControlStatusResponse_descriptor,
         new java.lang.String[] { "OldControlStatus", "NewControlStatus", });
-    internal_static_ondewo_csi_Condition_descriptor =
+    internal_static_ondewo_csi_CallMediaControlLevel_descriptor =
       getDescriptor().getMessageTypes().get(12);
+    internal_static_ondewo_csi_CallMediaControlLevel_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ondewo_csi_CallMediaControlLevel_descriptor,
+        new java.lang.String[] { "BotMuted", "ListeningPaused", "Generation", "Reason", });
+    internal_static_ondewo_csi_SetCallMediaControlResponse_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_ondewo_csi_SetCallMediaControlResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ondewo_csi_SetCallMediaControlResponse_descriptor,
+        new java.lang.String[] { "Applied", "Changed", "Stale", "BotPlaybackInFlight", "RefusalReason", });
+    internal_static_ondewo_csi_Condition_descriptor =
+      getDescriptor().getMessageTypes().get(14);
     internal_static_ondewo_csi_Condition_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ondewo_csi_Condition_descriptor,
         new java.lang.String[] { "Type", "Value", });
     internal_static_ondewo_csi_ControlMessageServiceParameters_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_ondewo_csi_ControlMessageServiceParameters_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ondewo_csi_ControlMessageServiceParameters_descriptor,
         new java.lang.String[] { "T2SConfig", "S2TConfig", "TransferId", "WavFiles", "Text", "Context", "SessionId", "ContextName", "ConditionStart", "ConditionEnd", "Config", });
     internal_static_ondewo_csi_ControlMessage_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_ondewo_csi_ControlMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ondewo_csi_ControlMessage_descriptor,
