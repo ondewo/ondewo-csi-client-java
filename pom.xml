@@ -31,7 +31,7 @@
 
   <groupId>com.ondewo</groupId>
   <artifactId>ondewo-csi-client-java</artifactId>
-  <version>5.5.1</version>
+  <version>5.6.0</version>
   <packaging>jar</packaging>
 
   <name>ondewo-csi-client-java</name>

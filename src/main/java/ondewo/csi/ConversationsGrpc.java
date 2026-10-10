@@ -294,6 +294,37 @@ public final class ConversationsGrpc {
     return getSetControlStatusMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<ondewo.csi.Conversation.CallMediaControlLevel,
+      ondewo.csi.Conversation.SetCallMediaControlResponse> getSetCallMediaControlMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SetCallMediaControl",
+      requestType = ondewo.csi.Conversation.CallMediaControlLevel.class,
+      responseType = ondewo.csi.Conversation.SetCallMediaControlResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<ondewo.csi.Conversation.CallMediaControlLevel,
+      ondewo.csi.Conversation.SetCallMediaControlResponse> getSetCallMediaControlMethod() {
+    io.grpc.MethodDescriptor<ondewo.csi.Conversation.CallMediaControlLevel, ondewo.csi.Conversation.SetCallMediaControlResponse> getSetCallMediaControlMethod;
+    if ((getSetCallMediaControlMethod = ConversationsGrpc.getSetCallMediaControlMethod) == null) {
+      synchronized (ConversationsGrpc.class) {
+        if ((getSetCallMediaControlMethod = ConversationsGrpc.getSetCallMediaControlMethod) == null) {
+          ConversationsGrpc.getSetCallMediaControlMethod = getSetCallMediaControlMethod =
+              io.grpc.MethodDescriptor.<ondewo.csi.Conversation.CallMediaControlLevel, ondewo.csi.Conversation.SetCallMediaControlResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SetCallMediaControl"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ondewo.csi.Conversation.CallMediaControlLevel.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ondewo.csi.Conversation.SetCallMediaControlResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ConversationsMethodDescriptorSupplier("SetCallMediaControl"))
+              .build();
+        }
+      }
+    }
+    return getSetCallMediaControlMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -524,6 +555,25 @@ public final class ConversationsGrpc {
         io.grpc.stub.StreamObserver<ondewo.csi.Conversation.SetControlStatusResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSetControlStatusMethod(), responseObserver);
     }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Set the per-call operator media control level: mute the bot and/or pause its listening.&lt;/p&gt;
+     * &lt;p&gt;Pushed by ondewo-sip only, which owns the per-call level and authenticates with its in-container token
+     * (the &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused.&lt;/p&gt;
+     * &lt;p&gt;The request carries the FULL effective level, never a toggle. The server applies it only when its
+     * &lt;code&gt;generation&lt;/code&gt; is strictly greater than the last applied generation and otherwise answers
+     * &lt;code&gt;stale=true&lt;/code&gt; without changing anything, so a push that arrives after the next call's resync can
+     * never re-apply an old call's level. The level is cleared at &lt;code&gt;CALL_ENDED&lt;/code&gt;; the generation is kept.&lt;/p&gt;
+     * &lt;p&gt;This RPC never changes the control status of &lt;code&gt;GetControlStream&lt;/code&gt; / &lt;code&gt;SetControlStatus&lt;/code&gt;
+     * (the barge-in slot). A level change is announced on the control stream as a
+     * &lt;code&gt;ControlStreamResponse&lt;/code&gt; with &lt;code&gt;media_control&lt;/code&gt; set.&lt;/p&gt;
+     * </pre>
+     */
+    default void setCallMediaControl(ondewo.csi.Conversation.CallMediaControlLevel request,
+        io.grpc.stub.StreamObserver<ondewo.csi.Conversation.SetCallMediaControlResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSetCallMediaControlMethod(), responseObserver);
+    }
   }
 
   /**
@@ -732,6 +782,26 @@ public final class ConversationsGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSetControlStatusMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Set the per-call operator media control level: mute the bot and/or pause its listening.&lt;/p&gt;
+     * &lt;p&gt;Pushed by ondewo-sip only, which owns the per-call level and authenticates with its in-container token
+     * (the &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused.&lt;/p&gt;
+     * &lt;p&gt;The request carries the FULL effective level, never a toggle. The server applies it only when its
+     * &lt;code&gt;generation&lt;/code&gt; is strictly greater than the last applied generation and otherwise answers
+     * &lt;code&gt;stale=true&lt;/code&gt; without changing anything, so a push that arrives after the next call's resync can
+     * never re-apply an old call's level. The level is cleared at &lt;code&gt;CALL_ENDED&lt;/code&gt;; the generation is kept.&lt;/p&gt;
+     * &lt;p&gt;This RPC never changes the control status of &lt;code&gt;GetControlStream&lt;/code&gt; / &lt;code&gt;SetControlStatus&lt;/code&gt;
+     * (the barge-in slot). A level change is announced on the control stream as a
+     * &lt;code&gt;ControlStreamResponse&lt;/code&gt; with &lt;code&gt;media_control&lt;/code&gt; set.&lt;/p&gt;
+     * </pre>
+     */
+    public void setCallMediaControl(ondewo.csi.Conversation.CallMediaControlLevel request,
+        io.grpc.stub.StreamObserver<ondewo.csi.Conversation.SetCallMediaControlResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getSetCallMediaControlMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -921,6 +991,25 @@ public final class ConversationsGrpc {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getSetControlStatusMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Set the per-call operator media control level: mute the bot and/or pause its listening.&lt;/p&gt;
+     * &lt;p&gt;Pushed by ondewo-sip only, which owns the per-call level and authenticates with its in-container token
+     * (the &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused.&lt;/p&gt;
+     * &lt;p&gt;The request carries the FULL effective level, never a toggle. The server applies it only when its
+     * &lt;code&gt;generation&lt;/code&gt; is strictly greater than the last applied generation and otherwise answers
+     * &lt;code&gt;stale=true&lt;/code&gt; without changing anything, so a push that arrives after the next call's resync can
+     * never re-apply an old call's level. The level is cleared at &lt;code&gt;CALL_ENDED&lt;/code&gt;; the generation is kept.&lt;/p&gt;
+     * &lt;p&gt;This RPC never changes the control status of &lt;code&gt;GetControlStream&lt;/code&gt; / &lt;code&gt;SetControlStatus&lt;/code&gt;
+     * (the barge-in slot). A level change is announced on the control stream as a
+     * &lt;code&gt;ControlStreamResponse&lt;/code&gt; with &lt;code&gt;media_control&lt;/code&gt; set.&lt;/p&gt;
+     * </pre>
+     */
+    public ondewo.csi.Conversation.SetCallMediaControlResponse setCallMediaControl(ondewo.csi.Conversation.CallMediaControlLevel request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getSetCallMediaControlMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -1097,6 +1186,25 @@ public final class ConversationsGrpc {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSetControlStatusMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Set the per-call operator media control level: mute the bot and/or pause its listening.&lt;/p&gt;
+     * &lt;p&gt;Pushed by ondewo-sip only, which owns the per-call level and authenticates with its in-container token
+     * (the &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused.&lt;/p&gt;
+     * &lt;p&gt;The request carries the FULL effective level, never a toggle. The server applies it only when its
+     * &lt;code&gt;generation&lt;/code&gt; is strictly greater than the last applied generation and otherwise answers
+     * &lt;code&gt;stale=true&lt;/code&gt; without changing anything, so a push that arrives after the next call's resync can
+     * never re-apply an old call's level. The level is cleared at &lt;code&gt;CALL_ENDED&lt;/code&gt;; the generation is kept.&lt;/p&gt;
+     * &lt;p&gt;This RPC never changes the control status of &lt;code&gt;GetControlStream&lt;/code&gt; / &lt;code&gt;SetControlStatus&lt;/code&gt;
+     * (the barge-in slot). A level change is announced on the control stream as a
+     * &lt;code&gt;ControlStreamResponse&lt;/code&gt; with &lt;code&gt;media_control&lt;/code&gt; set.&lt;/p&gt;
+     * </pre>
+     */
+    public ondewo.csi.Conversation.SetCallMediaControlResponse setCallMediaControl(ondewo.csi.Conversation.CallMediaControlLevel request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getSetCallMediaControlMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -1269,6 +1377,26 @@ public final class ConversationsGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSetControlStatusMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Set the per-call operator media control level: mute the bot and/or pause its listening.&lt;/p&gt;
+     * &lt;p&gt;Pushed by ondewo-sip only, which owns the per-call level and authenticates with its in-container token
+     * (the &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused.&lt;/p&gt;
+     * &lt;p&gt;The request carries the FULL effective level, never a toggle. The server applies it only when its
+     * &lt;code&gt;generation&lt;/code&gt; is strictly greater than the last applied generation and otherwise answers
+     * &lt;code&gt;stale=true&lt;/code&gt; without changing anything, so a push that arrives after the next call's resync can
+     * never re-apply an old call's level. The level is cleared at &lt;code&gt;CALL_ENDED&lt;/code&gt;; the generation is kept.&lt;/p&gt;
+     * &lt;p&gt;This RPC never changes the control status of &lt;code&gt;GetControlStream&lt;/code&gt; / &lt;code&gt;SetControlStatus&lt;/code&gt;
+     * (the barge-in slot). A level change is announced on the control stream as a
+     * &lt;code&gt;ControlStreamResponse&lt;/code&gt; with &lt;code&gt;media_control&lt;/code&gt; set.&lt;/p&gt;
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<ondewo.csi.Conversation.SetCallMediaControlResponse> setCallMediaControl(
+        ondewo.csi.Conversation.CallMediaControlLevel request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getSetCallMediaControlMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_S2S_PIPELINE = 0;
@@ -1279,7 +1407,8 @@ public final class ConversationsGrpc {
   private static final int METHODID_CHECK_UPSTREAM_HEALTH = 5;
   private static final int METHODID_GET_CONTROL_STREAM = 6;
   private static final int METHODID_SET_CONTROL_STATUS = 7;
-  private static final int METHODID_S2S_STREAM = 8;
+  private static final int METHODID_SET_CALL_MEDIA_CONTROL = 8;
+  private static final int METHODID_S2S_STREAM = 9;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1329,6 +1458,10 @@ public final class ConversationsGrpc {
         case METHODID_SET_CONTROL_STATUS:
           serviceImpl.setControlStatus((ondewo.csi.Conversation.SetControlStatusRequest) request,
               (io.grpc.stub.StreamObserver<ondewo.csi.Conversation.SetControlStatusResponse>) responseObserver);
+          break;
+        case METHODID_SET_CALL_MEDIA_CONTROL:
+          serviceImpl.setCallMediaControl((ondewo.csi.Conversation.CallMediaControlLevel) request,
+              (io.grpc.stub.StreamObserver<ondewo.csi.Conversation.SetCallMediaControlResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1414,6 +1547,13 @@ public final class ConversationsGrpc {
               ondewo.csi.Conversation.SetControlStatusRequest,
               ondewo.csi.Conversation.SetControlStatusResponse>(
                 service, METHODID_SET_CONTROL_STATUS)))
+        .addMethod(
+          getSetCallMediaControlMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              ondewo.csi.Conversation.CallMediaControlLevel,
+              ondewo.csi.Conversation.SetCallMediaControlResponse>(
+                service, METHODID_SET_CALL_MEDIA_CONTROL)))
         .build();
   }
 
@@ -1471,6 +1611,7 @@ public final class ConversationsGrpc {
               .addMethod(getCheckUpstreamHealthMethod())
               .addMethod(getGetControlStreamMethod())
               .addMethod(getSetControlStatusMethod())
+              .addMethod(getSetCallMediaControlMethod())
               .build();
         }
       }
