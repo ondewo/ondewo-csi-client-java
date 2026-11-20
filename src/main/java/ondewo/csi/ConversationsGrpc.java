@@ -325,6 +325,68 @@ public final class ConversationsGrpc {
     return getSetCallMediaControlMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<ondewo.csi.Conversation.CallerDtmfRequest,
+      ondewo.csi.Conversation.CallerDtmfResponse> getSetCallerDtmfMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SetCallerDtmf",
+      requestType = ondewo.csi.Conversation.CallerDtmfRequest.class,
+      responseType = ondewo.csi.Conversation.CallerDtmfResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<ondewo.csi.Conversation.CallerDtmfRequest,
+      ondewo.csi.Conversation.CallerDtmfResponse> getSetCallerDtmfMethod() {
+    io.grpc.MethodDescriptor<ondewo.csi.Conversation.CallerDtmfRequest, ondewo.csi.Conversation.CallerDtmfResponse> getSetCallerDtmfMethod;
+    if ((getSetCallerDtmfMethod = ConversationsGrpc.getSetCallerDtmfMethod) == null) {
+      synchronized (ConversationsGrpc.class) {
+        if ((getSetCallerDtmfMethod = ConversationsGrpc.getSetCallerDtmfMethod) == null) {
+          ConversationsGrpc.getSetCallerDtmfMethod = getSetCallerDtmfMethod =
+              io.grpc.MethodDescriptor.<ondewo.csi.Conversation.CallerDtmfRequest, ondewo.csi.Conversation.CallerDtmfResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SetCallerDtmf"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ondewo.csi.Conversation.CallerDtmfRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ondewo.csi.Conversation.CallerDtmfResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ConversationsMethodDescriptorSupplier("SetCallerDtmf"))
+              .build();
+        }
+      }
+    }
+    return getSetCallerDtmfMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<ondewo.csi.Conversation.WarmTransferOutcomeNotice,
+      ondewo.csi.Conversation.WarmTransferOutcomeNoticeResponse> getDeliverWarmTransferOutcomeNoticeMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DeliverWarmTransferOutcomeNotice",
+      requestType = ondewo.csi.Conversation.WarmTransferOutcomeNotice.class,
+      responseType = ondewo.csi.Conversation.WarmTransferOutcomeNoticeResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<ondewo.csi.Conversation.WarmTransferOutcomeNotice,
+      ondewo.csi.Conversation.WarmTransferOutcomeNoticeResponse> getDeliverWarmTransferOutcomeNoticeMethod() {
+    io.grpc.MethodDescriptor<ondewo.csi.Conversation.WarmTransferOutcomeNotice, ondewo.csi.Conversation.WarmTransferOutcomeNoticeResponse> getDeliverWarmTransferOutcomeNoticeMethod;
+    if ((getDeliverWarmTransferOutcomeNoticeMethod = ConversationsGrpc.getDeliverWarmTransferOutcomeNoticeMethod) == null) {
+      synchronized (ConversationsGrpc.class) {
+        if ((getDeliverWarmTransferOutcomeNoticeMethod = ConversationsGrpc.getDeliverWarmTransferOutcomeNoticeMethod) == null) {
+          ConversationsGrpc.getDeliverWarmTransferOutcomeNoticeMethod = getDeliverWarmTransferOutcomeNoticeMethod =
+              io.grpc.MethodDescriptor.<ondewo.csi.Conversation.WarmTransferOutcomeNotice, ondewo.csi.Conversation.WarmTransferOutcomeNoticeResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeliverWarmTransferOutcomeNotice"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ondewo.csi.Conversation.WarmTransferOutcomeNotice.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  ondewo.csi.Conversation.WarmTransferOutcomeNoticeResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ConversationsMethodDescriptorSupplier("DeliverWarmTransferOutcomeNotice"))
+              .build();
+        }
+      }
+    }
+    return getDeliverWarmTransferOutcomeNoticeMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -574,6 +636,46 @@ public final class ConversationsGrpc {
         io.grpc.stub.StreamObserver<ondewo.csi.Conversation.SetCallMediaControlResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSetCallMediaControlMethod(), responseObserver);
     }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Report one DTMF key the caller pressed on the current call.&lt;/p&gt;
+     * &lt;p&gt;Sent by ondewo-sip only, one request per key in the order received, authenticated with its in-container
+     * token (the &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused
+     * with &lt;code&gt;UNAUTHENTICATED&lt;/code&gt;.&lt;/p&gt;
+     * &lt;p&gt;The server turns keys into caller input: a key pressed while the bot speaks is a barge-in, a key of a
+     * declared menu commits a turn at once, and a key string is collected until its terminator, its maximum length
+     * or its inter-digit timeout. A key of another call, a repeated or older sequence number, or a key while the
+     * server takes no keys is answered &lt;code&gt;accepted=false&lt;/code&gt; with a reason token and changes nothing. Neither
+     * side ever logs the digit in clear.&lt;/p&gt;
+     * </pre>
+     */
+    default void setCallerDtmf(ondewo.csi.Conversation.CallerDtmfRequest request,
+        io.grpc.stub.StreamObserver<ondewo.csi.Conversation.CallerDtmfResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSetCallerDtmfMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Deliver the outcome of a warm transfer that did NOT hand the caller over, so the bot can tell the
+     * caller.&lt;/p&gt;
+     * &lt;p&gt;Sent by ondewo-sip only, authenticated with its in-container token (the
+     * &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused with
+     * &lt;code&gt;UNAUTHENTICATED&lt;/code&gt;. ondewo-sip sends it whenever a notice is attached to the release of the
+     * participant hold, after the level push of &lt;code&gt;SetCallMediaControl&lt;/code&gt; or on its own when the level did not
+     * change, and re-sends a notice it holds as pending (resync) by this RPC only, never inside a level. It clears
+     * its pending notice on &lt;code&gt;QUEUED&lt;/code&gt; or &lt;code&gt;DUPLICATE&lt;/code&gt;.&lt;/p&gt;
+     * &lt;p&gt;A queued notice is never dropped by the server, except by &lt;code&gt;CALL_ENDED&lt;/code&gt;: there is no caller left
+     * to tell. It is spoken once the bot is unmuted, its listening is not paused and no utterance is in flight. See
+     * &lt;code&gt;WarmTransferOutcomeNotice&lt;/code&gt; for how. This RPC has no generation, never changes the control status of
+     * &lt;code&gt;GetControlStream&lt;/code&gt; / &lt;code&gt;SetControlStatus&lt;/code&gt; and is never announced on the control stream. A
+     * server built against a CSI API before 5.9.0 answers &lt;code&gt;UNIMPLEMENTED&lt;/code&gt;.&lt;/p&gt;
+     * </pre>
+     */
+    default void deliverWarmTransferOutcomeNotice(ondewo.csi.Conversation.WarmTransferOutcomeNotice request,
+        io.grpc.stub.StreamObserver<ondewo.csi.Conversation.WarmTransferOutcomeNoticeResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeliverWarmTransferOutcomeNoticeMethod(), responseObserver);
+    }
   }
 
   /**
@@ -802,6 +904,48 @@ public final class ConversationsGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSetCallMediaControlMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Report one DTMF key the caller pressed on the current call.&lt;/p&gt;
+     * &lt;p&gt;Sent by ondewo-sip only, one request per key in the order received, authenticated with its in-container
+     * token (the &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused
+     * with &lt;code&gt;UNAUTHENTICATED&lt;/code&gt;.&lt;/p&gt;
+     * &lt;p&gt;The server turns keys into caller input: a key pressed while the bot speaks is a barge-in, a key of a
+     * declared menu commits a turn at once, and a key string is collected until its terminator, its maximum length
+     * or its inter-digit timeout. A key of another call, a repeated or older sequence number, or a key while the
+     * server takes no keys is answered &lt;code&gt;accepted=false&lt;/code&gt; with a reason token and changes nothing. Neither
+     * side ever logs the digit in clear.&lt;/p&gt;
+     * </pre>
+     */
+    public void setCallerDtmf(ondewo.csi.Conversation.CallerDtmfRequest request,
+        io.grpc.stub.StreamObserver<ondewo.csi.Conversation.CallerDtmfResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getSetCallerDtmfMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Deliver the outcome of a warm transfer that did NOT hand the caller over, so the bot can tell the
+     * caller.&lt;/p&gt;
+     * &lt;p&gt;Sent by ondewo-sip only, authenticated with its in-container token (the
+     * &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused with
+     * &lt;code&gt;UNAUTHENTICATED&lt;/code&gt;. ondewo-sip sends it whenever a notice is attached to the release of the
+     * participant hold, after the level push of &lt;code&gt;SetCallMediaControl&lt;/code&gt; or on its own when the level did not
+     * change, and re-sends a notice it holds as pending (resync) by this RPC only, never inside a level. It clears
+     * its pending notice on &lt;code&gt;QUEUED&lt;/code&gt; or &lt;code&gt;DUPLICATE&lt;/code&gt;.&lt;/p&gt;
+     * &lt;p&gt;A queued notice is never dropped by the server, except by &lt;code&gt;CALL_ENDED&lt;/code&gt;: there is no caller left
+     * to tell. It is spoken once the bot is unmuted, its listening is not paused and no utterance is in flight. See
+     * &lt;code&gt;WarmTransferOutcomeNotice&lt;/code&gt; for how. This RPC has no generation, never changes the control status of
+     * &lt;code&gt;GetControlStream&lt;/code&gt; / &lt;code&gt;SetControlStatus&lt;/code&gt; and is never announced on the control stream. A
+     * server built against a CSI API before 5.9.0 answers &lt;code&gt;UNIMPLEMENTED&lt;/code&gt;.&lt;/p&gt;
+     * </pre>
+     */
+    public void deliverWarmTransferOutcomeNotice(ondewo.csi.Conversation.WarmTransferOutcomeNotice request,
+        io.grpc.stub.StreamObserver<ondewo.csi.Conversation.WarmTransferOutcomeNoticeResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDeliverWarmTransferOutcomeNoticeMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -1010,6 +1154,46 @@ public final class ConversationsGrpc {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getSetCallMediaControlMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Report one DTMF key the caller pressed on the current call.&lt;/p&gt;
+     * &lt;p&gt;Sent by ondewo-sip only, one request per key in the order received, authenticated with its in-container
+     * token (the &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused
+     * with &lt;code&gt;UNAUTHENTICATED&lt;/code&gt;.&lt;/p&gt;
+     * &lt;p&gt;The server turns keys into caller input: a key pressed while the bot speaks is a barge-in, a key of a
+     * declared menu commits a turn at once, and a key string is collected until its terminator, its maximum length
+     * or its inter-digit timeout. A key of another call, a repeated or older sequence number, or a key while the
+     * server takes no keys is answered &lt;code&gt;accepted=false&lt;/code&gt; with a reason token and changes nothing. Neither
+     * side ever logs the digit in clear.&lt;/p&gt;
+     * </pre>
+     */
+    public ondewo.csi.Conversation.CallerDtmfResponse setCallerDtmf(ondewo.csi.Conversation.CallerDtmfRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getSetCallerDtmfMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Deliver the outcome of a warm transfer that did NOT hand the caller over, so the bot can tell the
+     * caller.&lt;/p&gt;
+     * &lt;p&gt;Sent by ondewo-sip only, authenticated with its in-container token (the
+     * &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused with
+     * &lt;code&gt;UNAUTHENTICATED&lt;/code&gt;. ondewo-sip sends it whenever a notice is attached to the release of the
+     * participant hold, after the level push of &lt;code&gt;SetCallMediaControl&lt;/code&gt; or on its own when the level did not
+     * change, and re-sends a notice it holds as pending (resync) by this RPC only, never inside a level. It clears
+     * its pending notice on &lt;code&gt;QUEUED&lt;/code&gt; or &lt;code&gt;DUPLICATE&lt;/code&gt;.&lt;/p&gt;
+     * &lt;p&gt;A queued notice is never dropped by the server, except by &lt;code&gt;CALL_ENDED&lt;/code&gt;: there is no caller left
+     * to tell. It is spoken once the bot is unmuted, its listening is not paused and no utterance is in flight. See
+     * &lt;code&gt;WarmTransferOutcomeNotice&lt;/code&gt; for how. This RPC has no generation, never changes the control status of
+     * &lt;code&gt;GetControlStream&lt;/code&gt; / &lt;code&gt;SetControlStatus&lt;/code&gt; and is never announced on the control stream. A
+     * server built against a CSI API before 5.9.0 answers &lt;code&gt;UNIMPLEMENTED&lt;/code&gt;.&lt;/p&gt;
+     * </pre>
+     */
+    public ondewo.csi.Conversation.WarmTransferOutcomeNoticeResponse deliverWarmTransferOutcomeNotice(ondewo.csi.Conversation.WarmTransferOutcomeNotice request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getDeliverWarmTransferOutcomeNoticeMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -1205,6 +1389,46 @@ public final class ConversationsGrpc {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSetCallMediaControlMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Report one DTMF key the caller pressed on the current call.&lt;/p&gt;
+     * &lt;p&gt;Sent by ondewo-sip only, one request per key in the order received, authenticated with its in-container
+     * token (the &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused
+     * with &lt;code&gt;UNAUTHENTICATED&lt;/code&gt;.&lt;/p&gt;
+     * &lt;p&gt;The server turns keys into caller input: a key pressed while the bot speaks is a barge-in, a key of a
+     * declared menu commits a turn at once, and a key string is collected until its terminator, its maximum length
+     * or its inter-digit timeout. A key of another call, a repeated or older sequence number, or a key while the
+     * server takes no keys is answered &lt;code&gt;accepted=false&lt;/code&gt; with a reason token and changes nothing. Neither
+     * side ever logs the digit in clear.&lt;/p&gt;
+     * </pre>
+     */
+    public ondewo.csi.Conversation.CallerDtmfResponse setCallerDtmf(ondewo.csi.Conversation.CallerDtmfRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getSetCallerDtmfMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Deliver the outcome of a warm transfer that did NOT hand the caller over, so the bot can tell the
+     * caller.&lt;/p&gt;
+     * &lt;p&gt;Sent by ondewo-sip only, authenticated with its in-container token (the
+     * &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused with
+     * &lt;code&gt;UNAUTHENTICATED&lt;/code&gt;. ondewo-sip sends it whenever a notice is attached to the release of the
+     * participant hold, after the level push of &lt;code&gt;SetCallMediaControl&lt;/code&gt; or on its own when the level did not
+     * change, and re-sends a notice it holds as pending (resync) by this RPC only, never inside a level. It clears
+     * its pending notice on &lt;code&gt;QUEUED&lt;/code&gt; or &lt;code&gt;DUPLICATE&lt;/code&gt;.&lt;/p&gt;
+     * &lt;p&gt;A queued notice is never dropped by the server, except by &lt;code&gt;CALL_ENDED&lt;/code&gt;: there is no caller left
+     * to tell. It is spoken once the bot is unmuted, its listening is not paused and no utterance is in flight. See
+     * &lt;code&gt;WarmTransferOutcomeNotice&lt;/code&gt; for how. This RPC has no generation, never changes the control status of
+     * &lt;code&gt;GetControlStream&lt;/code&gt; / &lt;code&gt;SetControlStatus&lt;/code&gt; and is never announced on the control stream. A
+     * server built against a CSI API before 5.9.0 answers &lt;code&gt;UNIMPLEMENTED&lt;/code&gt;.&lt;/p&gt;
+     * </pre>
+     */
+    public ondewo.csi.Conversation.WarmTransferOutcomeNoticeResponse deliverWarmTransferOutcomeNotice(ondewo.csi.Conversation.WarmTransferOutcomeNotice request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDeliverWarmTransferOutcomeNoticeMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -1397,6 +1621,48 @@ public final class ConversationsGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSetCallMediaControlMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Report one DTMF key the caller pressed on the current call.&lt;/p&gt;
+     * &lt;p&gt;Sent by ondewo-sip only, one request per key in the order received, authenticated with its in-container
+     * token (the &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused
+     * with &lt;code&gt;UNAUTHENTICATED&lt;/code&gt;.&lt;/p&gt;
+     * &lt;p&gt;The server turns keys into caller input: a key pressed while the bot speaks is a barge-in, a key of a
+     * declared menu commits a turn at once, and a key string is collected until its terminator, its maximum length
+     * or its inter-digit timeout. A key of another call, a repeated or older sequence number, or a key while the
+     * server takes no keys is answered &lt;code&gt;accepted=false&lt;/code&gt; with a reason token and changes nothing. Neither
+     * side ever logs the digit in clear.&lt;/p&gt;
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<ondewo.csi.Conversation.CallerDtmfResponse> setCallerDtmf(
+        ondewo.csi.Conversation.CallerDtmfRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getSetCallerDtmfMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * &lt;p&gt;Deliver the outcome of a warm transfer that did NOT hand the caller over, so the bot can tell the
+     * caller.&lt;/p&gt;
+     * &lt;p&gt;Sent by ondewo-sip only, authenticated with its in-container token (the
+     * &lt;code&gt;x-ondewo-sip-in-container-token&lt;/code&gt; metadatum). A request without a valid token is refused with
+     * &lt;code&gt;UNAUTHENTICATED&lt;/code&gt;. ondewo-sip sends it whenever a notice is attached to the release of the
+     * participant hold, after the level push of &lt;code&gt;SetCallMediaControl&lt;/code&gt; or on its own when the level did not
+     * change, and re-sends a notice it holds as pending (resync) by this RPC only, never inside a level. It clears
+     * its pending notice on &lt;code&gt;QUEUED&lt;/code&gt; or &lt;code&gt;DUPLICATE&lt;/code&gt;.&lt;/p&gt;
+     * &lt;p&gt;A queued notice is never dropped by the server, except by &lt;code&gt;CALL_ENDED&lt;/code&gt;: there is no caller left
+     * to tell. It is spoken once the bot is unmuted, its listening is not paused and no utterance is in flight. See
+     * &lt;code&gt;WarmTransferOutcomeNotice&lt;/code&gt; for how. This RPC has no generation, never changes the control status of
+     * &lt;code&gt;GetControlStream&lt;/code&gt; / &lt;code&gt;SetControlStatus&lt;/code&gt; and is never announced on the control stream. A
+     * server built against a CSI API before 5.9.0 answers &lt;code&gt;UNIMPLEMENTED&lt;/code&gt;.&lt;/p&gt;
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<ondewo.csi.Conversation.WarmTransferOutcomeNoticeResponse> deliverWarmTransferOutcomeNotice(
+        ondewo.csi.Conversation.WarmTransferOutcomeNotice request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDeliverWarmTransferOutcomeNoticeMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_S2S_PIPELINE = 0;
@@ -1408,7 +1674,9 @@ public final class ConversationsGrpc {
   private static final int METHODID_GET_CONTROL_STREAM = 6;
   private static final int METHODID_SET_CONTROL_STATUS = 7;
   private static final int METHODID_SET_CALL_MEDIA_CONTROL = 8;
-  private static final int METHODID_S2S_STREAM = 9;
+  private static final int METHODID_SET_CALLER_DTMF = 9;
+  private static final int METHODID_DELIVER_WARM_TRANSFER_OUTCOME_NOTICE = 10;
+  private static final int METHODID_S2S_STREAM = 11;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1462,6 +1730,14 @@ public final class ConversationsGrpc {
         case METHODID_SET_CALL_MEDIA_CONTROL:
           serviceImpl.setCallMediaControl((ondewo.csi.Conversation.CallMediaControlLevel) request,
               (io.grpc.stub.StreamObserver<ondewo.csi.Conversation.SetCallMediaControlResponse>) responseObserver);
+          break;
+        case METHODID_SET_CALLER_DTMF:
+          serviceImpl.setCallerDtmf((ondewo.csi.Conversation.CallerDtmfRequest) request,
+              (io.grpc.stub.StreamObserver<ondewo.csi.Conversation.CallerDtmfResponse>) responseObserver);
+          break;
+        case METHODID_DELIVER_WARM_TRANSFER_OUTCOME_NOTICE:
+          serviceImpl.deliverWarmTransferOutcomeNotice((ondewo.csi.Conversation.WarmTransferOutcomeNotice) request,
+              (io.grpc.stub.StreamObserver<ondewo.csi.Conversation.WarmTransferOutcomeNoticeResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1554,6 +1830,20 @@ public final class ConversationsGrpc {
               ondewo.csi.Conversation.CallMediaControlLevel,
               ondewo.csi.Conversation.SetCallMediaControlResponse>(
                 service, METHODID_SET_CALL_MEDIA_CONTROL)))
+        .addMethod(
+          getSetCallerDtmfMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              ondewo.csi.Conversation.CallerDtmfRequest,
+              ondewo.csi.Conversation.CallerDtmfResponse>(
+                service, METHODID_SET_CALLER_DTMF)))
+        .addMethod(
+          getDeliverWarmTransferOutcomeNoticeMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              ondewo.csi.Conversation.WarmTransferOutcomeNotice,
+              ondewo.csi.Conversation.WarmTransferOutcomeNoticeResponse>(
+                service, METHODID_DELIVER_WARM_TRANSFER_OUTCOME_NOTICE)))
         .build();
   }
 
@@ -1612,6 +1902,8 @@ public final class ConversationsGrpc {
               .addMethod(getGetControlStreamMethod())
               .addMethod(getSetControlStatusMethod())
               .addMethod(getSetCallMediaControlMethod())
+              .addMethod(getSetCallerDtmfMethod())
+              .addMethod(getDeliverWarmTransferOutcomeNoticeMethod())
               .build();
         }
       }
