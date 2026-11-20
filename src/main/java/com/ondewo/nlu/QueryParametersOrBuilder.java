@@ -551,4 +551,18 @@ public interface QueryParametersOrBuilder extends
    */
   com.ondewo.nlu.S2tTranscriptionOrBuilder getTranscriptionsOrBuilder(
       int index);
+
+  /**
+   * <pre>
+   * Optional. Marks the request as a preemptive draft: a turn the client (e.g. ondewo-csi) starts speculatively,
+   * e.g. on a partial transcript, and may later discard with &lt;code&gt;TurnControl.discard_draft&lt;/code&gt;. The server
+   * records the mark on the session step of this request. A &lt;code&gt;DiscardDraft&lt;/code&gt; deletes only a session step
+   * of the same session whose request carried this mark. A server that does not know this field ignores it and
+   * keeps the step.
+   * </pre>
+   *
+   * <code>bool preemptive_draft = 15;</code>
+   * @return The preemptiveDraft.
+   */
+  boolean getPreemptiveDraft();
 }

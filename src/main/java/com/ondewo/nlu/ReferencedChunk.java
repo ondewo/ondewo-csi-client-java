@@ -39,6 +39,7 @@ private static final long serialVersionUID = 0L;
     content_ = "";
     documentUrl_ = "";
     deepLinkUrl_ = "";
+    documentTitle_ = "";
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
@@ -418,6 +419,53 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int DOCUMENT_TITLE_FIELD_NUMBER = 10;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object documentTitle_ = "";
+  /**
+   * <pre>
+   * Title of the document (optional).
+   * </pre>
+   *
+   * <code>string document_title = 10;</code>
+   * @return The documentTitle.
+   */
+  @java.lang.Override
+  public java.lang.String getDocumentTitle() {
+    java.lang.Object ref = documentTitle_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      documentTitle_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * Title of the document (optional).
+   * </pre>
+   *
+   * <code>string document_title = 10;</code>
+   * @return The bytes for documentTitle.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getDocumentTitleBytes() {
+    java.lang.Object ref = documentTitle_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      documentTitle_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -459,6 +507,9 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(deepLinkUrl_)) {
       com.google.protobuf.GeneratedMessage.writeString(output, 9, deepLinkUrl_);
     }
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(documentTitle_)) {
+      com.google.protobuf.GeneratedMessage.writeString(output, 10, documentTitle_);
+    }
     getUnknownFields().writeTo(output);
   }
   private int computeSerializedSize_0() {
@@ -491,6 +542,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(deepLinkUrl_)) {
       size += com.google.protobuf.GeneratedMessage.computeStringSize(9, deepLinkUrl_);
+    }
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(documentTitle_)) {
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(10, documentTitle_);
     }
     return size;
   }
@@ -535,6 +589,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getDocumentUrl())) return false;
     if (!getDeepLinkUrl()
         .equals(other.getDeepLinkUrl())) return false;
+    if (!getDocumentTitle()
+        .equals(other.getDocumentTitle())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -565,6 +621,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getDocumentUrl().hashCode();
     hash = (37 * hash) + DEEP_LINK_URL_FIELD_NUMBER;
     hash = (53 * hash) + getDeepLinkUrl().hashCode();
+    hash = (37 * hash) + DOCUMENT_TITLE_FIELD_NUMBER;
+    hash = (53 * hash) + getDocumentTitle().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -709,6 +767,7 @@ private static final long serialVersionUID = 0L;
       similarity_ = 0F;
       documentUrl_ = "";
       deepLinkUrl_ = "";
+      documentTitle_ = "";
       return this;
     }
 
@@ -769,6 +828,9 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000100) != 0)) {
         result.deepLinkUrl_ = deepLinkUrl_;
       }
+      if (((from_bitField0_ & 0x00000200) != 0)) {
+        result.documentTitle_ = documentTitle_;
+      }
     }
 
     @java.lang.Override
@@ -822,6 +884,11 @@ private static final long serialVersionUID = 0L;
       if (!other.getDeepLinkUrl().isEmpty()) {
         deepLinkUrl_ = other.deepLinkUrl_;
         bitField0_ |= 0x00000100;
+        onChanged();
+      }
+      if (!other.getDocumentTitle().isEmpty()) {
+        documentTitle_ = other.documentTitle_;
+        bitField0_ |= 0x00000200;
         onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
@@ -895,6 +962,11 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000100;
               break;
             } // case 74
+            case 82: {
+              documentTitle_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000200;
+              break;
+            } // case 82
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1640,6 +1712,98 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       deepLinkUrl_ = value;
       bitField0_ |= 0x00000100;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object documentTitle_ = "";
+    /**
+     * <pre>
+     * Title of the document (optional).
+     * </pre>
+     *
+     * <code>string document_title = 10;</code>
+     * @return The documentTitle.
+     */
+    public java.lang.String getDocumentTitle() {
+      java.lang.Object ref = documentTitle_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        documentTitle_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * Title of the document (optional).
+     * </pre>
+     *
+     * <code>string document_title = 10;</code>
+     * @return The bytes for documentTitle.
+     */
+    public com.google.protobuf.ByteString
+        getDocumentTitleBytes() {
+      java.lang.Object ref = documentTitle_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        documentTitle_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * Title of the document (optional).
+     * </pre>
+     *
+     * <code>string document_title = 10;</code>
+     * @param value The documentTitle to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDocumentTitle(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      documentTitle_ = value;
+      bitField0_ |= 0x00000200;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Title of the document (optional).
+     * </pre>
+     *
+     * <code>string document_title = 10;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDocumentTitle() {
+      documentTitle_ = getDefaultInstance().getDocumentTitle();
+      bitField0_ = (bitField0_ & ~0x00000200);
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Title of the document (optional).
+     * </pre>
+     *
+     * <code>string document_title = 10;</code>
+     * @param value The bytes for documentTitle to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDocumentTitleBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      documentTitle_ = value;
+      bitField0_ |= 0x00000200;
       onChanged();
       return this;
     }

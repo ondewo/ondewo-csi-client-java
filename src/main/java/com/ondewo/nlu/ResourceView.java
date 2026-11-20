@@ -151,7 +151,7 @@ public enum ResourceView
   }
   public static com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return com.ondewo.nlu.SessionProto.getDescriptor().getEnumType(10);
+    return com.ondewo.nlu.SessionProto.getDescriptor().getEnumType(18);
   }
 
   private static final ResourceView[] VALUES = values();

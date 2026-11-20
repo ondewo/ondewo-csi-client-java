@@ -202,7 +202,7 @@ public enum ComparisonOperator
   }
   public static com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return com.ondewo.nlu.SessionProto.getDescriptor().getEnumType(5);
+    return com.ondewo.nlu.SessionProto.getDescriptor().getEnumType(13);
   }
 
   private static final ComparisonOperator[] VALUES = values();

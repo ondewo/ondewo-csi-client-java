@@ -871,6 +871,25 @@ private static final long serialVersionUID = 0L;
     return transcriptions_.get(index);
   }
 
+  public static final int PREEMPTIVE_DRAFT_FIELD_NUMBER = 15;
+  private boolean preemptiveDraft_ = false;
+  /**
+   * <pre>
+   * Optional. Marks the request as a preemptive draft: a turn the client (e.g. ondewo-csi) starts speculatively,
+   * e.g. on a partial transcript, and may later discard with &lt;code&gt;TurnControl.discard_draft&lt;/code&gt;. The server
+   * records the mark on the session step of this request. A &lt;code&gt;DiscardDraft&lt;/code&gt; deletes only a session step
+   * of the same session whose request carried this mark. A server that does not know this field ignores it and
+   * keeps the step.
+   * </pre>
+   *
+   * <code>bool preemptive_draft = 15;</code>
+   * @return The preemptiveDraft.
+   */
+  @java.lang.Override
+  public boolean getPreemptiveDraft() {
+    return preemptiveDraft_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -928,6 +947,9 @@ private static final long serialVersionUID = 0L;
     }
     for (int i = 0; i < transcriptions_.size(); i++) {
       output.writeMessage(14, transcriptions_.get(i));
+    }
+    if (preemptiveDraft_ != false) {
+      output.writeBool(15, preemptiveDraft_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -1001,6 +1023,10 @@ private static final long serialVersionUID = 0L;
           }
           size += 1 * count;
         }
+    if (preemptiveDraft_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(15, preemptiveDraft_);
+    }
     return size;
   }
   @java.lang.Override
@@ -1056,6 +1082,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getIdentifiedUserId())) return false;
     if (!getTranscriptionsList()
         .equals(other.getTranscriptionsList())) return false;
+    if (getPreemptiveDraft()
+        != other.getPreemptiveDraft()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -1106,6 +1134,9 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + TRANSCRIPTIONS_FIELD_NUMBER;
       hash = (53 * hash) + getTranscriptionsList().hashCode();
     }
+    hash = (37 * hash) + PREEMPTIVE_DRAFT_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getPreemptiveDraft());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -1284,6 +1315,7 @@ private static final long serialVersionUID = 0L;
         transcriptionsBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00001000);
+      preemptiveDraft_ = false;
       return this;
     }
 
@@ -1380,6 +1412,9 @@ private static final long serialVersionUID = 0L;
       }
       if (((from_bitField0_ & 0x00000800) != 0)) {
         result.identifiedUserId_ = identifiedUserId_;
+      }
+      if (((from_bitField0_ & 0x00002000) != 0)) {
+        result.preemptiveDraft_ = preemptiveDraft_;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -1508,6 +1543,9 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
+      if (other.getPreemptiveDraft() != false) {
+        setPreemptiveDraft(other.getPreemptiveDraft());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -1630,6 +1668,11 @@ private static final long serialVersionUID = 0L;
               }
               break;
             } // case 114
+            case 120: {
+              preemptiveDraft_ = input.readBool();
+              bitField0_ |= 0x00002000;
+              break;
+            } // case 120
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -4041,6 +4084,62 @@ private static final long serialVersionUID = 0L;
         transcriptions_ = null;
       }
       return transcriptionsBuilder_;
+    }
+
+    private boolean preemptiveDraft_ ;
+    /**
+     * <pre>
+     * Optional. Marks the request as a preemptive draft: a turn the client (e.g. ondewo-csi) starts speculatively,
+     * e.g. on a partial transcript, and may later discard with &lt;code&gt;TurnControl.discard_draft&lt;/code&gt;. The server
+     * records the mark on the session step of this request. A &lt;code&gt;DiscardDraft&lt;/code&gt; deletes only a session step
+     * of the same session whose request carried this mark. A server that does not know this field ignores it and
+     * keeps the step.
+     * </pre>
+     *
+     * <code>bool preemptive_draft = 15;</code>
+     * @return The preemptiveDraft.
+     */
+    @java.lang.Override
+    public boolean getPreemptiveDraft() {
+      return preemptiveDraft_;
+    }
+    /**
+     * <pre>
+     * Optional. Marks the request as a preemptive draft: a turn the client (e.g. ondewo-csi) starts speculatively,
+     * e.g. on a partial transcript, and may later discard with &lt;code&gt;TurnControl.discard_draft&lt;/code&gt;. The server
+     * records the mark on the session step of this request. A &lt;code&gt;DiscardDraft&lt;/code&gt; deletes only a session step
+     * of the same session whose request carried this mark. A server that does not know this field ignores it and
+     * keeps the step.
+     * </pre>
+     *
+     * <code>bool preemptive_draft = 15;</code>
+     * @param value The preemptiveDraft to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPreemptiveDraft(boolean value) {
+
+      preemptiveDraft_ = value;
+      bitField0_ |= 0x00002000;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Optional. Marks the request as a preemptive draft: a turn the client (e.g. ondewo-csi) starts speculatively,
+     * e.g. on a partial transcript, and may later discard with &lt;code&gt;TurnControl.discard_draft&lt;/code&gt;. The server
+     * records the mark on the session step of this request. A &lt;code&gt;DiscardDraft&lt;/code&gt; deletes only a session step
+     * of the same session whose request carried this mark. A server that does not know this field ignores it and
+     * keeps the step.
+     * </pre>
+     *
+     * <code>bool preemptive_draft = 15;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPreemptiveDraft() {
+      bitField0_ = (bitField0_ & ~0x00002000);
+      preemptiveDraft_ = false;
+      onChanged();
+      return this;
     }
 
     // @@protoc_insertion_point(builder_scope:ondewo.nlu.QueryParameters)
