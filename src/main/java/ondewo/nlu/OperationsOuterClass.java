@@ -9371,6 +9371,56 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
      */
     com.google.protobuf.ByteString
         getContainerIdBytes();
+
+    /**
+     * <pre>
+     * Optional. Only stream lines whose message matches this regular expression (Python &lt;code&gt;re&lt;/code&gt; syntax,
+     * at most 512 characters). Empty (the default) disables regex filtering. An invalid, oversized or
+     * catastrophically backtracking pattern is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt;.
+     * </pre>
+     *
+     * <code>string regex = 5;</code>
+     * @return The regex.
+     */
+    java.lang.String getRegex();
+    /**
+     * <pre>
+     * Optional. Only stream lines whose message matches this regular expression (Python &lt;code&gt;re&lt;/code&gt; syntax,
+     * at most 512 characters). Empty (the default) disables regex filtering. An invalid, oversized or
+     * catastrophically backtracking pattern is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt;.
+     * </pre>
+     *
+     * <code>string regex = 5;</code>
+     * @return The bytes for regex.
+     */
+    com.google.protobuf.ByteString
+        getRegexBytes();
+
+    /**
+     * <pre>
+     * Optional. Resume exactly where a previous stream or &lt;code&gt;GetRemoteOperationContainerLogs&lt;/code&gt; page
+     * stopped: the &lt;code&gt;next_resume_token&lt;/code&gt; of that response, echoed back verbatim. When set, no
+     * historical replay is applied and &lt;code&gt;tail_lines&lt;/code&gt; is ignored. The token is interchangeable with
+     * &lt;code&gt;Logs.StreamLogs&lt;/code&gt; / &lt;code&gt;Logs.ListLogs&lt;/code&gt; tokens.
+     * </pre>
+     *
+     * <code>string resume_token = 6;</code>
+     * @return The resumeToken.
+     */
+    java.lang.String getResumeToken();
+    /**
+     * <pre>
+     * Optional. Resume exactly where a previous stream or &lt;code&gt;GetRemoteOperationContainerLogs&lt;/code&gt; page
+     * stopped: the &lt;code&gt;next_resume_token&lt;/code&gt; of that response, echoed back verbatim. When set, no
+     * historical replay is applied and &lt;code&gt;tail_lines&lt;/code&gt; is ignored. The token is interchangeable with
+     * &lt;code&gt;Logs.StreamLogs&lt;/code&gt; / &lt;code&gt;Logs.ListLogs&lt;/code&gt; tokens.
+     * </pre>
+     *
+     * <code>string resume_token = 6;</code>
+     * @return The bytes for resumeToken.
+     */
+    com.google.protobuf.ByteString
+        getResumeTokenBytes();
   }
   /**
    * <pre>
@@ -9401,6 +9451,8 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       name_ = "";
       minLogLevel_ = 0;
       containerId_ = "";
+      regex_ = "";
+      resumeToken_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -9565,6 +9617,110 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       }
     }
 
+    public static final int REGEX_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object regex_ = "";
+    /**
+     * <pre>
+     * Optional. Only stream lines whose message matches this regular expression (Python &lt;code&gt;re&lt;/code&gt; syntax,
+     * at most 512 characters). Empty (the default) disables regex filtering. An invalid, oversized or
+     * catastrophically backtracking pattern is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt;.
+     * </pre>
+     *
+     * <code>string regex = 5;</code>
+     * @return The regex.
+     */
+    @java.lang.Override
+    public java.lang.String getRegex() {
+      java.lang.Object ref = regex_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        regex_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Optional. Only stream lines whose message matches this regular expression (Python &lt;code&gt;re&lt;/code&gt; syntax,
+     * at most 512 characters). Empty (the default) disables regex filtering. An invalid, oversized or
+     * catastrophically backtracking pattern is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt;.
+     * </pre>
+     *
+     * <code>string regex = 5;</code>
+     * @return The bytes for regex.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRegexBytes() {
+      java.lang.Object ref = regex_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        regex_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int RESUME_TOKEN_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object resumeToken_ = "";
+    /**
+     * <pre>
+     * Optional. Resume exactly where a previous stream or &lt;code&gt;GetRemoteOperationContainerLogs&lt;/code&gt; page
+     * stopped: the &lt;code&gt;next_resume_token&lt;/code&gt; of that response, echoed back verbatim. When set, no
+     * historical replay is applied and &lt;code&gt;tail_lines&lt;/code&gt; is ignored. The token is interchangeable with
+     * &lt;code&gt;Logs.StreamLogs&lt;/code&gt; / &lt;code&gt;Logs.ListLogs&lt;/code&gt; tokens.
+     * </pre>
+     *
+     * <code>string resume_token = 6;</code>
+     * @return The resumeToken.
+     */
+    @java.lang.Override
+    public java.lang.String getResumeToken() {
+      java.lang.Object ref = resumeToken_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        resumeToken_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Optional. Resume exactly where a previous stream or &lt;code&gt;GetRemoteOperationContainerLogs&lt;/code&gt; page
+     * stopped: the &lt;code&gt;next_resume_token&lt;/code&gt; of that response, echoed back verbatim. When set, no
+     * historical replay is applied and &lt;code&gt;tail_lines&lt;/code&gt; is ignored. The token is interchangeable with
+     * &lt;code&gt;Logs.StreamLogs&lt;/code&gt; / &lt;code&gt;Logs.ListLogs&lt;/code&gt; tokens.
+     * </pre>
+     *
+     * <code>string resume_token = 6;</code>
+     * @return The bytes for resumeToken.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getResumeTokenBytes() {
+      java.lang.Object ref = resumeToken_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        resumeToken_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -9591,6 +9747,12 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(containerId_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 4, containerId_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(regex_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 5, regex_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(resumeToken_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 6, resumeToken_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -9608,6 +9770,12 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(containerId_)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(4, containerId_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(regex_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, regex_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(resumeToken_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(6, resumeToken_);
       }
       return size;
     }
@@ -9640,6 +9808,10 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
           != other.getTailLines()) return false;
       if (!getContainerId()
           .equals(other.getContainerId())) return false;
+      if (!getRegex()
+          .equals(other.getRegex())) return false;
+      if (!getResumeToken()
+          .equals(other.getResumeToken())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -9659,6 +9831,10 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       hash = (53 * hash) + getTailLines();
       hash = (37 * hash) + CONTAINER_ID_FIELD_NUMBER;
       hash = (53 * hash) + getContainerId().hashCode();
+      hash = (37 * hash) + REGEX_FIELD_NUMBER;
+      hash = (53 * hash) + getRegex().hashCode();
+      hash = (37 * hash) + RESUME_TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getResumeToken().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -9798,6 +9974,8 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         minLogLevel_ = 0;
         tailLines_ = 0;
         containerId_ = "";
+        regex_ = "";
+        resumeToken_ = "";
         return this;
       }
 
@@ -9843,6 +10021,12 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         if (((from_bitField0_ & 0x00000008) != 0)) {
           result.containerId_ = containerId_;
         }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.regex_ = regex_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.resumeToken_ = resumeToken_;
+        }
       }
 
       @java.lang.Override
@@ -9871,6 +10055,16 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         if (!other.getContainerId().isEmpty()) {
           containerId_ = other.containerId_;
           bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        if (!other.getRegex().isEmpty()) {
+          regex_ = other.regex_;
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        if (!other.getResumeToken().isEmpty()) {
+          resumeToken_ = other.resumeToken_;
+          bitField0_ |= 0x00000020;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -9919,6 +10113,16 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
                 bitField0_ |= 0x00000008;
                 break;
               } // case 34
+              case 42: {
+                regex_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 50: {
+                resumeToken_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -10259,6 +10463,215 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         return this;
       }
 
+      private java.lang.Object regex_ = "";
+      /**
+       * <pre>
+       * Optional. Only stream lines whose message matches this regular expression (Python &lt;code&gt;re&lt;/code&gt; syntax,
+       * at most 512 characters). Empty (the default) disables regex filtering. An invalid, oversized or
+       * catastrophically backtracking pattern is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt;.
+       * </pre>
+       *
+       * <code>string regex = 5;</code>
+       * @return The regex.
+       */
+      public java.lang.String getRegex() {
+        java.lang.Object ref = regex_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          regex_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Optional. Only stream lines whose message matches this regular expression (Python &lt;code&gt;re&lt;/code&gt; syntax,
+       * at most 512 characters). Empty (the default) disables regex filtering. An invalid, oversized or
+       * catastrophically backtracking pattern is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt;.
+       * </pre>
+       *
+       * <code>string regex = 5;</code>
+       * @return The bytes for regex.
+       */
+      public com.google.protobuf.ByteString
+          getRegexBytes() {
+        java.lang.Object ref = regex_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          regex_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Optional. Only stream lines whose message matches this regular expression (Python &lt;code&gt;re&lt;/code&gt; syntax,
+       * at most 512 characters). Empty (the default) disables regex filtering. An invalid, oversized or
+       * catastrophically backtracking pattern is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt;.
+       * </pre>
+       *
+       * <code>string regex = 5;</code>
+       * @param value The regex to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRegex(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        regex_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Optional. Only stream lines whose message matches this regular expression (Python &lt;code&gt;re&lt;/code&gt; syntax,
+       * at most 512 characters). Empty (the default) disables regex filtering. An invalid, oversized or
+       * catastrophically backtracking pattern is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt;.
+       * </pre>
+       *
+       * <code>string regex = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRegex() {
+        regex_ = getDefaultInstance().getRegex();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Optional. Only stream lines whose message matches this regular expression (Python &lt;code&gt;re&lt;/code&gt; syntax,
+       * at most 512 characters). Empty (the default) disables regex filtering. An invalid, oversized or
+       * catastrophically backtracking pattern is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt;.
+       * </pre>
+       *
+       * <code>string regex = 5;</code>
+       * @param value The bytes for regex to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRegexBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        regex_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object resumeToken_ = "";
+      /**
+       * <pre>
+       * Optional. Resume exactly where a previous stream or &lt;code&gt;GetRemoteOperationContainerLogs&lt;/code&gt; page
+       * stopped: the &lt;code&gt;next_resume_token&lt;/code&gt; of that response, echoed back verbatim. When set, no
+       * historical replay is applied and &lt;code&gt;tail_lines&lt;/code&gt; is ignored. The token is interchangeable with
+       * &lt;code&gt;Logs.StreamLogs&lt;/code&gt; / &lt;code&gt;Logs.ListLogs&lt;/code&gt; tokens.
+       * </pre>
+       *
+       * <code>string resume_token = 6;</code>
+       * @return The resumeToken.
+       */
+      public java.lang.String getResumeToken() {
+        java.lang.Object ref = resumeToken_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          resumeToken_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Optional. Resume exactly where a previous stream or &lt;code&gt;GetRemoteOperationContainerLogs&lt;/code&gt; page
+       * stopped: the &lt;code&gt;next_resume_token&lt;/code&gt; of that response, echoed back verbatim. When set, no
+       * historical replay is applied and &lt;code&gt;tail_lines&lt;/code&gt; is ignored. The token is interchangeable with
+       * &lt;code&gt;Logs.StreamLogs&lt;/code&gt; / &lt;code&gt;Logs.ListLogs&lt;/code&gt; tokens.
+       * </pre>
+       *
+       * <code>string resume_token = 6;</code>
+       * @return The bytes for resumeToken.
+       */
+      public com.google.protobuf.ByteString
+          getResumeTokenBytes() {
+        java.lang.Object ref = resumeToken_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          resumeToken_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Optional. Resume exactly where a previous stream or &lt;code&gt;GetRemoteOperationContainerLogs&lt;/code&gt; page
+       * stopped: the &lt;code&gt;next_resume_token&lt;/code&gt; of that response, echoed back verbatim. When set, no
+       * historical replay is applied and &lt;code&gt;tail_lines&lt;/code&gt; is ignored. The token is interchangeable with
+       * &lt;code&gt;Logs.StreamLogs&lt;/code&gt; / &lt;code&gt;Logs.ListLogs&lt;/code&gt; tokens.
+       * </pre>
+       *
+       * <code>string resume_token = 6;</code>
+       * @param value The resumeToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResumeToken(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        resumeToken_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Optional. Resume exactly where a previous stream or &lt;code&gt;GetRemoteOperationContainerLogs&lt;/code&gt; page
+       * stopped: the &lt;code&gt;next_resume_token&lt;/code&gt; of that response, echoed back verbatim. When set, no
+       * historical replay is applied and &lt;code&gt;tail_lines&lt;/code&gt; is ignored. The token is interchangeable with
+       * &lt;code&gt;Logs.StreamLogs&lt;/code&gt; / &lt;code&gt;Logs.ListLogs&lt;/code&gt; tokens.
+       * </pre>
+       *
+       * <code>string resume_token = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearResumeToken() {
+        resumeToken_ = getDefaultInstance().getResumeToken();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Optional. Resume exactly where a previous stream or &lt;code&gt;GetRemoteOperationContainerLogs&lt;/code&gt; page
+       * stopped: the &lt;code&gt;next_resume_token&lt;/code&gt; of that response, echoed back verbatim. When set, no
+       * historical replay is applied and &lt;code&gt;tail_lines&lt;/code&gt; is ignored. The token is interchangeable with
+       * &lt;code&gt;Logs.StreamLogs&lt;/code&gt; / &lt;code&gt;Logs.ListLogs&lt;/code&gt; tokens.
+       * </pre>
+       *
+       * <code>string resume_token = 6;</code>
+       * @param value The bytes for resumeToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResumeTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        resumeToken_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ondewo.nlu.StreamRemoteOperationContainerLogsRequest)
     }
 
@@ -10496,6 +10909,66 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
      * @return The afterSeq.
      */
     long getAfterSeq();
+
+    /**
+     * <pre>
+     * Optional. Partial response: the field paths to populate in every returned
+     * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+     * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+     * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+     * </pre>
+     *
+     * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+     * @return Whether the fieldMask field is set.
+     */
+    boolean hasFieldMask();
+    /**
+     * <pre>
+     * Optional. Partial response: the field paths to populate in every returned
+     * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+     * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+     * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+     * </pre>
+     *
+     * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+     * @return The fieldMask.
+     */
+    com.google.protobuf.FieldMask getFieldMask();
+    /**
+     * <pre>
+     * Optional. Partial response: the field paths to populate in every returned
+     * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+     * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+     * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+     * </pre>
+     *
+     * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+     */
+    com.google.protobuf.FieldMaskOrBuilder getFieldMaskOrBuilder();
+
+    /**
+     * <pre>
+     * Optional. An opaque cursor from a previous response&amp;apos;s &lt;code&gt;next_resume_token&lt;/code&gt;. Use it instead of
+     * &lt;code&gt;after_seq&lt;/code&gt; / &lt;code&gt;before_seq&lt;/code&gt; when the operation ran several containers. Cannot be
+     * combined with &lt;code&gt;before_seq&lt;/code&gt; or &lt;code&gt;after_seq&lt;/code&gt;.
+     * </pre>
+     *
+     * <code>string resume_token = 11;</code>
+     * @return The resumeToken.
+     */
+    java.lang.String getResumeToken();
+    /**
+     * <pre>
+     * Optional. An opaque cursor from a previous response&amp;apos;s &lt;code&gt;next_resume_token&lt;/code&gt;. Use it instead of
+     * &lt;code&gt;after_seq&lt;/code&gt; / &lt;code&gt;before_seq&lt;/code&gt; when the operation ran several containers. Cannot be
+     * combined with &lt;code&gt;before_seq&lt;/code&gt; or &lt;code&gt;after_seq&lt;/code&gt;.
+     * </pre>
+     *
+     * <code>string resume_token = 11;</code>
+     * @return The bytes for resumeToken.
+     */
+    com.google.protobuf.ByteString
+        getResumeTokenBytes();
   }
   /**
    * <pre>
@@ -10527,6 +11000,7 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       minLogLevel_ = 0;
       regex_ = "";
       containerId_ = "";
+      resumeToken_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -10856,6 +11330,104 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       return afterSeq_;
     }
 
+    public static final int FIELD_MASK_FIELD_NUMBER = 10;
+    private com.google.protobuf.FieldMask fieldMask_;
+    /**
+     * <pre>
+     * Optional. Partial response: the field paths to populate in every returned
+     * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+     * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+     * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+     * </pre>
+     *
+     * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+     * @return Whether the fieldMask field is set.
+     */
+    @java.lang.Override
+    public boolean hasFieldMask() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * Optional. Partial response: the field paths to populate in every returned
+     * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+     * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+     * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+     * </pre>
+     *
+     * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+     * @return The fieldMask.
+     */
+    @java.lang.Override
+    public com.google.protobuf.FieldMask getFieldMask() {
+      return fieldMask_ == null ? com.google.protobuf.FieldMask.getDefaultInstance() : fieldMask_;
+    }
+    /**
+     * <pre>
+     * Optional. Partial response: the field paths to populate in every returned
+     * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+     * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+     * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+     * </pre>
+     *
+     * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.FieldMaskOrBuilder getFieldMaskOrBuilder() {
+      return fieldMask_ == null ? com.google.protobuf.FieldMask.getDefaultInstance() : fieldMask_;
+    }
+
+    public static final int RESUME_TOKEN_FIELD_NUMBER = 11;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object resumeToken_ = "";
+    /**
+     * <pre>
+     * Optional. An opaque cursor from a previous response&amp;apos;s &lt;code&gt;next_resume_token&lt;/code&gt;. Use it instead of
+     * &lt;code&gt;after_seq&lt;/code&gt; / &lt;code&gt;before_seq&lt;/code&gt; when the operation ran several containers. Cannot be
+     * combined with &lt;code&gt;before_seq&lt;/code&gt; or &lt;code&gt;after_seq&lt;/code&gt;.
+     * </pre>
+     *
+     * <code>string resume_token = 11;</code>
+     * @return The resumeToken.
+     */
+    @java.lang.Override
+    public java.lang.String getResumeToken() {
+      java.lang.Object ref = resumeToken_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        resumeToken_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Optional. An opaque cursor from a previous response&amp;apos;s &lt;code&gt;next_resume_token&lt;/code&gt;. Use it instead of
+     * &lt;code&gt;after_seq&lt;/code&gt; / &lt;code&gt;before_seq&lt;/code&gt; when the operation ran several containers. Cannot be
+     * combined with &lt;code&gt;before_seq&lt;/code&gt; or &lt;code&gt;after_seq&lt;/code&gt;.
+     * </pre>
+     *
+     * <code>string resume_token = 11;</code>
+     * @return The bytes for resumeToken.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getResumeTokenBytes() {
+      java.lang.Object ref = resumeToken_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        resumeToken_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -10897,6 +11469,12 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       if (afterSeq_ != 0L) {
         output.writeInt64(9, afterSeq_);
       }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeMessage(10, getFieldMask());
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(resumeToken_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 11, resumeToken_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -10933,6 +11511,13 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       if (afterSeq_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(9, afterSeq_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, getFieldMask());
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(resumeToken_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(11, resumeToken_);
       }
       return size;
     }
@@ -10981,6 +11566,13 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
           != other.getBeforeSeq()) return false;
       if (getAfterSeq()
           != other.getAfterSeq()) return false;
+      if (hasFieldMask() != other.hasFieldMask()) return false;
+      if (hasFieldMask()) {
+        if (!getFieldMask()
+            .equals(other.getFieldMask())) return false;
+      }
+      if (!getResumeToken()
+          .equals(other.getResumeToken())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -11016,6 +11608,12 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       hash = (37 * hash) + AFTER_SEQ_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getAfterSeq());
+      if (hasFieldMask()) {
+        hash = (37 * hash) + FIELD_MASK_FIELD_NUMBER;
+        hash = (53 * hash) + getFieldMask().hashCode();
+      }
+      hash = (37 * hash) + RESUME_TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getResumeToken().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -11152,6 +11750,7 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
                 .alwaysUseFieldBuilders) {
           internalGetStartTimeFieldBuilder();
           internalGetEndTimeFieldBuilder();
+          internalGetFieldMaskFieldBuilder();
         }
       }
       @java.lang.Override
@@ -11175,6 +11774,12 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         containerId_ = "";
         beforeSeq_ = 0L;
         afterSeq_ = 0L;
+        fieldMask_ = null;
+        if (fieldMaskBuilder_ != null) {
+          fieldMaskBuilder_.dispose();
+          fieldMaskBuilder_ = null;
+        }
+        resumeToken_ = "";
         return this;
       }
 
@@ -11242,6 +11847,15 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         if (((from_bitField0_ & 0x00000100) != 0)) {
           result.afterSeq_ = afterSeq_;
         }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.fieldMask_ = fieldMaskBuilder_ == null
+              ? fieldMask_
+              : fieldMaskBuilder_.build();
+          to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000400) != 0)) {
+          result.resumeToken_ = resumeToken_;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -11289,6 +11903,14 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         }
         if (other.getAfterSeq() != 0L) {
           setAfterSeq(other.getAfterSeq());
+        }
+        if (other.hasFieldMask()) {
+          mergeFieldMask(other.getFieldMask());
+        }
+        if (!other.getResumeToken().isEmpty()) {
+          resumeToken_ = other.resumeToken_;
+          bitField0_ |= 0x00000400;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -11365,6 +11987,18 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
                 bitField0_ |= 0x00000100;
                 break;
               } // case 72
+              case 82: {
+                input.readMessage(
+                    internalGetFieldMaskFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000200;
+                break;
+              } // case 82
+              case 90: {
+                resumeToken_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000400;
+                break;
+              } // case 90
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -12231,6 +12865,292 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         return this;
       }
 
+      private com.google.protobuf.FieldMask fieldMask_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.FieldMask, com.google.protobuf.FieldMask.Builder, com.google.protobuf.FieldMaskOrBuilder> fieldMaskBuilder_;
+      /**
+       * <pre>
+       * Optional. Partial response: the field paths to populate in every returned
+       * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+       * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+       * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+       * </pre>
+       *
+       * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+       * @return Whether the fieldMask field is set.
+       */
+      public boolean hasFieldMask() {
+        return ((bitField0_ & 0x00000200) != 0);
+      }
+      /**
+       * <pre>
+       * Optional. Partial response: the field paths to populate in every returned
+       * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+       * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+       * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+       * </pre>
+       *
+       * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+       * @return The fieldMask.
+       */
+      public com.google.protobuf.FieldMask getFieldMask() {
+        if (fieldMaskBuilder_ == null) {
+          return fieldMask_ == null ? com.google.protobuf.FieldMask.getDefaultInstance() : fieldMask_;
+        } else {
+          return fieldMaskBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * Optional. Partial response: the field paths to populate in every returned
+       * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+       * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+       * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+       * </pre>
+       *
+       * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+       */
+      public Builder setFieldMask(com.google.protobuf.FieldMask value) {
+        if (fieldMaskBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          fieldMask_ = value;
+        } else {
+          fieldMaskBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Optional. Partial response: the field paths to populate in every returned
+       * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+       * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+       * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+       * </pre>
+       *
+       * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+       */
+      public Builder setFieldMask(
+          com.google.protobuf.FieldMask.Builder builderForValue) {
+        if (fieldMaskBuilder_ == null) {
+          fieldMask_ = builderForValue.build();
+        } else {
+          fieldMaskBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Optional. Partial response: the field paths to populate in every returned
+       * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+       * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+       * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+       * </pre>
+       *
+       * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+       */
+      public Builder mergeFieldMask(com.google.protobuf.FieldMask value) {
+        if (fieldMaskBuilder_ == null) {
+          if (((bitField0_ & 0x00000200) != 0) &&
+            fieldMask_ != null &&
+            fieldMask_ != com.google.protobuf.FieldMask.getDefaultInstance()) {
+            getFieldMaskBuilder().mergeFrom(value);
+          } else {
+            fieldMask_ = value;
+          }
+        } else {
+          fieldMaskBuilder_.mergeFrom(value);
+        }
+        if (fieldMask_ != null) {
+          bitField0_ |= 0x00000200;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Optional. Partial response: the field paths to populate in every returned
+       * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+       * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+       * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+       * </pre>
+       *
+       * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+       */
+      public Builder clearFieldMask() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        fieldMask_ = null;
+        if (fieldMaskBuilder_ != null) {
+          fieldMaskBuilder_.dispose();
+          fieldMaskBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Optional. Partial response: the field paths to populate in every returned
+       * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+       * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+       * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+       * </pre>
+       *
+       * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+       */
+      public com.google.protobuf.FieldMask.Builder getFieldMaskBuilder() {
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return internalGetFieldMaskFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Optional. Partial response: the field paths to populate in every returned
+       * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+       * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+       * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+       * </pre>
+       *
+       * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+       */
+      public com.google.protobuf.FieldMaskOrBuilder getFieldMaskOrBuilder() {
+        if (fieldMaskBuilder_ != null) {
+          return fieldMaskBuilder_.getMessageOrBuilder();
+        } else {
+          return fieldMask_ == null ?
+              com.google.protobuf.FieldMask.getDefaultInstance() : fieldMask_;
+        }
+      }
+      /**
+       * <pre>
+       * Optional. Partial response: the field paths to populate in every returned
+       * &lt;code&gt;RemoteOperationContainerLogLine&lt;/code&gt;, relative to that message (no &lt;code&gt;log_lines.&lt;/code&gt;
+       * prefix). &lt;code&gt;seq&lt;/code&gt; and &lt;code&gt;log_stream&lt;/code&gt; are always populated. Unset or empty returns every
+       * field. An unknown path is rejected with &lt;code&gt;INVALID_ARGUMENT&lt;/code&gt; naming it.
+       * </pre>
+       *
+       * <code>.google.protobuf.FieldMask field_mask = 10;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.FieldMask, com.google.protobuf.FieldMask.Builder, com.google.protobuf.FieldMaskOrBuilder> 
+          internalGetFieldMaskFieldBuilder() {
+        if (fieldMaskBuilder_ == null) {
+          fieldMaskBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.google.protobuf.FieldMask, com.google.protobuf.FieldMask.Builder, com.google.protobuf.FieldMaskOrBuilder>(
+                  getFieldMask(),
+                  getParentForChildren(),
+                  isClean());
+          fieldMask_ = null;
+        }
+        return fieldMaskBuilder_;
+      }
+
+      private java.lang.Object resumeToken_ = "";
+      /**
+       * <pre>
+       * Optional. An opaque cursor from a previous response&amp;apos;s &lt;code&gt;next_resume_token&lt;/code&gt;. Use it instead of
+       * &lt;code&gt;after_seq&lt;/code&gt; / &lt;code&gt;before_seq&lt;/code&gt; when the operation ran several containers. Cannot be
+       * combined with &lt;code&gt;before_seq&lt;/code&gt; or &lt;code&gt;after_seq&lt;/code&gt;.
+       * </pre>
+       *
+       * <code>string resume_token = 11;</code>
+       * @return The resumeToken.
+       */
+      public java.lang.String getResumeToken() {
+        java.lang.Object ref = resumeToken_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          resumeToken_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Optional. An opaque cursor from a previous response&amp;apos;s &lt;code&gt;next_resume_token&lt;/code&gt;. Use it instead of
+       * &lt;code&gt;after_seq&lt;/code&gt; / &lt;code&gt;before_seq&lt;/code&gt; when the operation ran several containers. Cannot be
+       * combined with &lt;code&gt;before_seq&lt;/code&gt; or &lt;code&gt;after_seq&lt;/code&gt;.
+       * </pre>
+       *
+       * <code>string resume_token = 11;</code>
+       * @return The bytes for resumeToken.
+       */
+      public com.google.protobuf.ByteString
+          getResumeTokenBytes() {
+        java.lang.Object ref = resumeToken_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          resumeToken_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Optional. An opaque cursor from a previous response&amp;apos;s &lt;code&gt;next_resume_token&lt;/code&gt;. Use it instead of
+       * &lt;code&gt;after_seq&lt;/code&gt; / &lt;code&gt;before_seq&lt;/code&gt; when the operation ran several containers. Cannot be
+       * combined with &lt;code&gt;before_seq&lt;/code&gt; or &lt;code&gt;after_seq&lt;/code&gt;.
+       * </pre>
+       *
+       * <code>string resume_token = 11;</code>
+       * @param value The resumeToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResumeToken(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        resumeToken_ = value;
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Optional. An opaque cursor from a previous response&amp;apos;s &lt;code&gt;next_resume_token&lt;/code&gt;. Use it instead of
+       * &lt;code&gt;after_seq&lt;/code&gt; / &lt;code&gt;before_seq&lt;/code&gt; when the operation ran several containers. Cannot be
+       * combined with &lt;code&gt;before_seq&lt;/code&gt; or &lt;code&gt;after_seq&lt;/code&gt;.
+       * </pre>
+       *
+       * <code>string resume_token = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearResumeToken() {
+        resumeToken_ = getDefaultInstance().getResumeToken();
+        bitField0_ = (bitField0_ & ~0x00000400);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Optional. An opaque cursor from a previous response&amp;apos;s &lt;code&gt;next_resume_token&lt;/code&gt;. Use it instead of
+       * &lt;code&gt;after_seq&lt;/code&gt; / &lt;code&gt;before_seq&lt;/code&gt; when the operation ran several containers. Cannot be
+       * combined with &lt;code&gt;before_seq&lt;/code&gt; or &lt;code&gt;after_seq&lt;/code&gt;.
+       * </pre>
+       *
+       * <code>string resume_token = 11;</code>
+       * @param value The bytes for resumeToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResumeTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        resumeToken_ = value;
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ondewo.nlu.GetRemoteOperationContainerLogsRequest)
     }
 
@@ -12371,6 +13291,38 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
      * @return The hasMoreOlder.
      */
     boolean getHasMoreOlder();
+
+    /**
+     * <pre>
+     * Cursor to fetch the next window, or to start a &lt;code&gt;StreamRemoteOperationContainerLogs&lt;/code&gt; (or a
+     * &lt;code&gt;Logs.StreamLogs&lt;/code&gt;) that continues exactly where this window ended.
+     * </pre>
+     *
+     * <code>string next_resume_token = 6;</code>
+     * @return The nextResumeToken.
+     */
+    java.lang.String getNextResumeToken();
+    /**
+     * <pre>
+     * Cursor to fetch the next window, or to start a &lt;code&gt;StreamRemoteOperationContainerLogs&lt;/code&gt; (or a
+     * &lt;code&gt;Logs.StreamLogs&lt;/code&gt;) that continues exactly where this window ended.
+     * </pre>
+     *
+     * <code>string next_resume_token = 6;</code>
+     * @return The bytes for nextResumeToken.
+     */
+    com.google.protobuf.ByteString
+        getNextResumeTokenBytes();
+
+    /**
+     * <pre>
+     * True when entries newer than this window exist.
+     * </pre>
+     *
+     * <code>bool has_more_newer = 7;</code>
+     * @return The hasMoreNewer.
+     */
+    boolean getHasMoreNewer();
   }
   /**
    * <pre>
@@ -12399,6 +13351,7 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
     }
     private GetRemoteOperationContainerLogsResponse() {
       logLines_ = java.util.Collections.emptyList();
+      nextResumeToken_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -12542,6 +13495,70 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       return hasMoreOlder_;
     }
 
+    public static final int NEXT_RESUME_TOKEN_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object nextResumeToken_ = "";
+    /**
+     * <pre>
+     * Cursor to fetch the next window, or to start a &lt;code&gt;StreamRemoteOperationContainerLogs&lt;/code&gt; (or a
+     * &lt;code&gt;Logs.StreamLogs&lt;/code&gt;) that continues exactly where this window ended.
+     * </pre>
+     *
+     * <code>string next_resume_token = 6;</code>
+     * @return The nextResumeToken.
+     */
+    @java.lang.Override
+    public java.lang.String getNextResumeToken() {
+      java.lang.Object ref = nextResumeToken_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nextResumeToken_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Cursor to fetch the next window, or to start a &lt;code&gt;StreamRemoteOperationContainerLogs&lt;/code&gt; (or a
+     * &lt;code&gt;Logs.StreamLogs&lt;/code&gt;) that continues exactly where this window ended.
+     * </pre>
+     *
+     * <code>string next_resume_token = 6;</code>
+     * @return The bytes for nextResumeToken.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNextResumeTokenBytes() {
+      java.lang.Object ref = nextResumeToken_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nextResumeToken_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int HAS_MORE_NEWER_FIELD_NUMBER = 7;
+    private boolean hasMoreNewer_ = false;
+    /**
+     * <pre>
+     * True when entries newer than this window exist.
+     * </pre>
+     *
+     * <code>bool has_more_newer = 7;</code>
+     * @return The hasMoreNewer.
+     */
+    @java.lang.Override
+    public boolean getHasMoreNewer() {
+      return hasMoreNewer_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -12571,6 +13588,12 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       if (hasMoreOlder_ != false) {
         output.writeBool(5, hasMoreOlder_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(nextResumeToken_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 6, nextResumeToken_);
+      }
+      if (hasMoreNewer_ != false) {
+        output.writeBool(7, hasMoreNewer_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -12599,6 +13622,13 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       if (hasMoreOlder_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(5, hasMoreOlder_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(nextResumeToken_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(6, nextResumeToken_);
+      }
+      if (hasMoreNewer_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, hasMoreNewer_);
       }
       return size;
     }
@@ -12634,6 +13664,10 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
           != other.getMaxAvailableSeq()) return false;
       if (getHasMoreOlder()
           != other.getHasMoreOlder()) return false;
+      if (!getNextResumeToken()
+          .equals(other.getNextResumeToken())) return false;
+      if (getHasMoreNewer()
+          != other.getHasMoreNewer()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -12661,6 +13695,11 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       hash = (37 * hash) + HAS_MORE_OLDER_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getHasMoreOlder());
+      hash = (37 * hash) + NEXT_RESUME_TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getNextResumeToken().hashCode();
+      hash = (37 * hash) + HAS_MORE_NEWER_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getHasMoreNewer());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -12807,6 +13846,8 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         minAvailableSeq_ = 0L;
         maxAvailableSeq_ = 0L;
         hasMoreOlder_ = false;
+        nextResumeToken_ = "";
+        hasMoreNewer_ = false;
         return this;
       }
 
@@ -12865,6 +13906,12 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         if (((from_bitField0_ & 0x00000010) != 0)) {
           result.hasMoreOlder_ = hasMoreOlder_;
         }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.nextResumeToken_ = nextResumeToken_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.hasMoreNewer_ = hasMoreNewer_;
+        }
       }
 
       @java.lang.Override
@@ -12916,6 +13963,14 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         }
         if (other.getHasMoreOlder() != false) {
           setHasMoreOlder(other.getHasMoreOlder());
+        }
+        if (!other.getNextResumeToken().isEmpty()) {
+          nextResumeToken_ = other.nextResumeToken_;
+          bitField0_ |= 0x00000020;
+          onChanged();
+        }
+        if (other.getHasMoreNewer() != false) {
+          setHasMoreNewer(other.getHasMoreNewer());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -12976,6 +14031,16 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
                 bitField0_ |= 0x00000010;
                 break;
               } // case 40
+              case 50: {
+                nextResumeToken_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+              case 56: {
+                hasMoreNewer_ = input.readBool();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 56
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -13487,6 +14552,147 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         return this;
       }
 
+      private java.lang.Object nextResumeToken_ = "";
+      /**
+       * <pre>
+       * Cursor to fetch the next window, or to start a &lt;code&gt;StreamRemoteOperationContainerLogs&lt;/code&gt; (or a
+       * &lt;code&gt;Logs.StreamLogs&lt;/code&gt;) that continues exactly where this window ended.
+       * </pre>
+       *
+       * <code>string next_resume_token = 6;</code>
+       * @return The nextResumeToken.
+       */
+      public java.lang.String getNextResumeToken() {
+        java.lang.Object ref = nextResumeToken_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nextResumeToken_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Cursor to fetch the next window, or to start a &lt;code&gt;StreamRemoteOperationContainerLogs&lt;/code&gt; (or a
+       * &lt;code&gt;Logs.StreamLogs&lt;/code&gt;) that continues exactly where this window ended.
+       * </pre>
+       *
+       * <code>string next_resume_token = 6;</code>
+       * @return The bytes for nextResumeToken.
+       */
+      public com.google.protobuf.ByteString
+          getNextResumeTokenBytes() {
+        java.lang.Object ref = nextResumeToken_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nextResumeToken_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Cursor to fetch the next window, or to start a &lt;code&gt;StreamRemoteOperationContainerLogs&lt;/code&gt; (or a
+       * &lt;code&gt;Logs.StreamLogs&lt;/code&gt;) that continues exactly where this window ended.
+       * </pre>
+       *
+       * <code>string next_resume_token = 6;</code>
+       * @param value The nextResumeToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNextResumeToken(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        nextResumeToken_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Cursor to fetch the next window, or to start a &lt;code&gt;StreamRemoteOperationContainerLogs&lt;/code&gt; (or a
+       * &lt;code&gt;Logs.StreamLogs&lt;/code&gt;) that continues exactly where this window ended.
+       * </pre>
+       *
+       * <code>string next_resume_token = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNextResumeToken() {
+        nextResumeToken_ = getDefaultInstance().getNextResumeToken();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Cursor to fetch the next window, or to start a &lt;code&gt;StreamRemoteOperationContainerLogs&lt;/code&gt; (or a
+       * &lt;code&gt;Logs.StreamLogs&lt;/code&gt;) that continues exactly where this window ended.
+       * </pre>
+       *
+       * <code>string next_resume_token = 6;</code>
+       * @param value The bytes for nextResumeToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNextResumeTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        nextResumeToken_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+
+      private boolean hasMoreNewer_ ;
+      /**
+       * <pre>
+       * True when entries newer than this window exist.
+       * </pre>
+       *
+       * <code>bool has_more_newer = 7;</code>
+       * @return The hasMoreNewer.
+       */
+      @java.lang.Override
+      public boolean getHasMoreNewer() {
+        return hasMoreNewer_;
+      }
+      /**
+       * <pre>
+       * True when entries newer than this window exist.
+       * </pre>
+       *
+       * <code>bool has_more_newer = 7;</code>
+       * @param value The hasMoreNewer to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHasMoreNewer(boolean value) {
+
+        hasMoreNewer_ = value;
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * True when entries newer than this window exist.
+       * </pre>
+       *
+       * <code>bool has_more_newer = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHasMoreNewer() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        hasMoreNewer_ = false;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ondewo.nlu.GetRemoteOperationContainerLogsResponse)
     }
 
@@ -13654,15 +14860,39 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
 
     /**
      * <pre>
-     * The monotonically-increasing sequence number of this line within its container&amp;apos;s captured log
-     * (assigned by the server-side capture). Used as the cursor for infinite-scroll paging. &lt;code&gt;0&lt;/code&gt;
-     * when the line was produced by a legacy path that did not assign a sequence.
+     * Ordering cursor of this line, assigned by the database. Monotonically increasing WITHIN ONE CONTAINER but
+     * NOT contiguous: values come from a sequence shared by every log stream and are removed by retention. Never
+     * compute the next cursor as &lt;code&gt;seq + 1&lt;/code&gt;; pass it back as &lt;code&gt;after_seq&lt;/code&gt; /
+     * &lt;code&gt;before_seq&lt;/code&gt; (strictly greater / smaller) or use &lt;code&gt;resume_token&lt;/code&gt;. &lt;code&gt;0&lt;/code&gt; when
+     * the line was produced by a legacy path that did not assign a sequence.
      * </pre>
      *
      * <code>int64 seq = 6;</code>
      * @return The seq.
      */
     long getSeq();
+
+    /**
+     * <pre>
+     * Resource name of the log stream this line belongs to (see
+     * &lt;a href="index.html#ondewo.nlu.CaiLogEntry"&gt;CaiLogEntry.log_stream&lt;/a&gt;).
+     * </pre>
+     *
+     * <code>string log_stream = 7;</code>
+     * @return The logStream.
+     */
+    java.lang.String getLogStream();
+    /**
+     * <pre>
+     * Resource name of the log stream this line belongs to (see
+     * &lt;a href="index.html#ondewo.nlu.CaiLogEntry"&gt;CaiLogEntry.log_stream&lt;/a&gt;).
+     * </pre>
+     *
+     * <code>string log_stream = 7;</code>
+     * @return The bytes for logStream.
+     */
+    com.google.protobuf.ByteString
+        getLogStreamBytes();
   }
   /**
    * <pre>
@@ -13694,6 +14924,7 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       message_ = "";
       containerId_ = "";
       containerName_ = "";
+      logStream_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -13928,9 +15159,11 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
     private long seq_ = 0L;
     /**
      * <pre>
-     * The monotonically-increasing sequence number of this line within its container&amp;apos;s captured log
-     * (assigned by the server-side capture). Used as the cursor for infinite-scroll paging. &lt;code&gt;0&lt;/code&gt;
-     * when the line was produced by a legacy path that did not assign a sequence.
+     * Ordering cursor of this line, assigned by the database. Monotonically increasing WITHIN ONE CONTAINER but
+     * NOT contiguous: values come from a sequence shared by every log stream and are removed by retention. Never
+     * compute the next cursor as &lt;code&gt;seq + 1&lt;/code&gt;; pass it back as &lt;code&gt;after_seq&lt;/code&gt; /
+     * &lt;code&gt;before_seq&lt;/code&gt; (strictly greater / smaller) or use &lt;code&gt;resume_token&lt;/code&gt;. &lt;code&gt;0&lt;/code&gt; when
+     * the line was produced by a legacy path that did not assign a sequence.
      * </pre>
      *
      * <code>int64 seq = 6;</code>
@@ -13939,6 +15172,55 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
     @java.lang.Override
     public long getSeq() {
       return seq_;
+    }
+
+    public static final int LOG_STREAM_FIELD_NUMBER = 7;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object logStream_ = "";
+    /**
+     * <pre>
+     * Resource name of the log stream this line belongs to (see
+     * &lt;a href="index.html#ondewo.nlu.CaiLogEntry"&gt;CaiLogEntry.log_stream&lt;/a&gt;).
+     * </pre>
+     *
+     * <code>string log_stream = 7;</code>
+     * @return The logStream.
+     */
+    @java.lang.Override
+    public java.lang.String getLogStream() {
+      java.lang.Object ref = logStream_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        logStream_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Resource name of the log stream this line belongs to (see
+     * &lt;a href="index.html#ondewo.nlu.CaiLogEntry"&gt;CaiLogEntry.log_stream&lt;/a&gt;).
+     * </pre>
+     *
+     * <code>string log_stream = 7;</code>
+     * @return The bytes for logStream.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getLogStreamBytes() {
+      java.lang.Object ref = logStream_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        logStream_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -13973,6 +15255,9 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       if (seq_ != 0L) {
         output.writeInt64(6, seq_);
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(logStream_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 7, logStream_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -13997,6 +15282,9 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       if (seq_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(6, seq_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(logStream_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(7, logStream_);
       }
       return size;
     }
@@ -14036,6 +15324,8 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
           .equals(other.getContainerName())) return false;
       if (getSeq()
           != other.getSeq()) return false;
+      if (!getLogStream()
+          .equals(other.getLogStream())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -14062,6 +15352,8 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       hash = (37 * hash) + SEQ_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getSeq());
+      hash = (37 * hash) + LOG_STREAM_FIELD_NUMBER;
+      hash = (53 * hash) + getLogStream().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -14213,6 +15505,7 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         containerId_ = "";
         containerName_ = "";
         seq_ = 0L;
+        logStream_ = "";
         return this;
       }
 
@@ -14268,6 +15561,9 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         if (((from_bitField0_ & 0x00000020) != 0)) {
           result.seq_ = seq_;
         }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.logStream_ = logStream_;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -14306,6 +15602,11 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
         }
         if (other.getSeq() != 0L) {
           setSeq(other.getSeq());
+        }
+        if (!other.getLogStream().isEmpty()) {
+          logStream_ = other.logStream_;
+          bitField0_ |= 0x00000040;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -14365,6 +15666,11 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
                 bitField0_ |= 0x00000020;
                 break;
               } // case 48
+              case 58: {
+                logStream_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 58
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -14900,9 +16206,11 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       private long seq_ ;
       /**
        * <pre>
-       * The monotonically-increasing sequence number of this line within its container&amp;apos;s captured log
-       * (assigned by the server-side capture). Used as the cursor for infinite-scroll paging. &lt;code&gt;0&lt;/code&gt;
-       * when the line was produced by a legacy path that did not assign a sequence.
+       * Ordering cursor of this line, assigned by the database. Monotonically increasing WITHIN ONE CONTAINER but
+       * NOT contiguous: values come from a sequence shared by every log stream and are removed by retention. Never
+       * compute the next cursor as &lt;code&gt;seq + 1&lt;/code&gt;; pass it back as &lt;code&gt;after_seq&lt;/code&gt; /
+       * &lt;code&gt;before_seq&lt;/code&gt; (strictly greater / smaller) or use &lt;code&gt;resume_token&lt;/code&gt;. &lt;code&gt;0&lt;/code&gt; when
+       * the line was produced by a legacy path that did not assign a sequence.
        * </pre>
        *
        * <code>int64 seq = 6;</code>
@@ -14914,9 +16222,11 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       }
       /**
        * <pre>
-       * The monotonically-increasing sequence number of this line within its container&amp;apos;s captured log
-       * (assigned by the server-side capture). Used as the cursor for infinite-scroll paging. &lt;code&gt;0&lt;/code&gt;
-       * when the line was produced by a legacy path that did not assign a sequence.
+       * Ordering cursor of this line, assigned by the database. Monotonically increasing WITHIN ONE CONTAINER but
+       * NOT contiguous: values come from a sequence shared by every log stream and are removed by retention. Never
+       * compute the next cursor as &lt;code&gt;seq + 1&lt;/code&gt;; pass it back as &lt;code&gt;after_seq&lt;/code&gt; /
+       * &lt;code&gt;before_seq&lt;/code&gt; (strictly greater / smaller) or use &lt;code&gt;resume_token&lt;/code&gt;. &lt;code&gt;0&lt;/code&gt; when
+       * the line was produced by a legacy path that did not assign a sequence.
        * </pre>
        *
        * <code>int64 seq = 6;</code>
@@ -14932,9 +16242,11 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       }
       /**
        * <pre>
-       * The monotonically-increasing sequence number of this line within its container&amp;apos;s captured log
-       * (assigned by the server-side capture). Used as the cursor for infinite-scroll paging. &lt;code&gt;0&lt;/code&gt;
-       * when the line was produced by a legacy path that did not assign a sequence.
+       * Ordering cursor of this line, assigned by the database. Monotonically increasing WITHIN ONE CONTAINER but
+       * NOT contiguous: values come from a sequence shared by every log stream and are removed by retention. Never
+       * compute the next cursor as &lt;code&gt;seq + 1&lt;/code&gt;; pass it back as &lt;code&gt;after_seq&lt;/code&gt; /
+       * &lt;code&gt;before_seq&lt;/code&gt; (strictly greater / smaller) or use &lt;code&gt;resume_token&lt;/code&gt;. &lt;code&gt;0&lt;/code&gt; when
+       * the line was produced by a legacy path that did not assign a sequence.
        * </pre>
        *
        * <code>int64 seq = 6;</code>
@@ -14943,6 +16255,103 @@ public final class OperationsOuterClass extends com.google.protobuf.GeneratedFil
       public Builder clearSeq() {
         bitField0_ = (bitField0_ & ~0x00000020);
         seq_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object logStream_ = "";
+      /**
+       * <pre>
+       * Resource name of the log stream this line belongs to (see
+       * &lt;a href="index.html#ondewo.nlu.CaiLogEntry"&gt;CaiLogEntry.log_stream&lt;/a&gt;).
+       * </pre>
+       *
+       * <code>string log_stream = 7;</code>
+       * @return The logStream.
+       */
+      public java.lang.String getLogStream() {
+        java.lang.Object ref = logStream_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          logStream_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Resource name of the log stream this line belongs to (see
+       * &lt;a href="index.html#ondewo.nlu.CaiLogEntry"&gt;CaiLogEntry.log_stream&lt;/a&gt;).
+       * </pre>
+       *
+       * <code>string log_stream = 7;</code>
+       * @return The bytes for logStream.
+       */
+      public com.google.protobuf.ByteString
+          getLogStreamBytes() {
+        java.lang.Object ref = logStream_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          logStream_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Resource name of the log stream this line belongs to (see
+       * &lt;a href="index.html#ondewo.nlu.CaiLogEntry"&gt;CaiLogEntry.log_stream&lt;/a&gt;).
+       * </pre>
+       *
+       * <code>string log_stream = 7;</code>
+       * @param value The logStream to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLogStream(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        logStream_ = value;
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Resource name of the log stream this line belongs to (see
+       * &lt;a href="index.html#ondewo.nlu.CaiLogEntry"&gt;CaiLogEntry.log_stream&lt;/a&gt;).
+       * </pre>
+       *
+       * <code>string log_stream = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLogStream() {
+        logStream_ = getDefaultInstance().getLogStream();
+        bitField0_ = (bitField0_ & ~0x00000040);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Resource name of the log stream this line belongs to (see
+       * &lt;a href="index.html#ondewo.nlu.CaiLogEntry"&gt;CaiLogEntry.log_stream&lt;/a&gt;).
+       * </pre>
+       *
+       * <code>string log_stream = 7;</code>
+       * @param value The bytes for logStream to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLogStreamBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        logStream_ = value;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -25033,111 +26442,116 @@ java.lang.String defaultValue) {
       "ponse\022)\n\noperations\030\001 \003(\0132\025.ondewo.nlu.O" +
       "peration\022\027\n\017next_page_token\030\002 \001(\t\"&\n\026Can" +
       "celOperationRequest\022\014\n\004name\030\001 \001(\t\"&\n\026Del" +
-      "eteOperationRequest\022\014\n\004name\030\001 \001(\t\"\223\001\n)St" +
+      "eteOperationRequest\022\014\n\004name\030\001 \001(\t\"\270\001\n)St" +
       "reamRemoteOperationContainerLogsRequest\022" +
       "\014\n\004name\030\001 \001(\t\022.\n\rmin_log_level\030\002 \001(\0162\027.o" +
       "ndewo.nlu.LogSeverity\022\022\n\ntail_lines\030\003 \001(" +
-      "\005\022\024\n\014container_id\030\004 \001(\t\"\243\002\n&GetRemoteOpe" +
-      "rationContainerLogsRequest\022\014\n\004name\030\001 \001(\t" +
-      "\022.\n\rmin_log_level\030\002 \001(\0162\027.ondewo.nlu.Log" +
-      "Severity\022.\n\nstart_time\030\003 \001(\0132\032.google.pr" +
-      "otobuf.Timestamp\022,\n\010end_time\030\004 \001(\0132\032.goo" +
-      "gle.protobuf.Timestamp\022\021\n\tmax_lines\030\005 \001(" +
-      "\005\022\r\n\005regex\030\006 \001(\t\022\024\n\014container_id\030\007 \001(\t\022\022" +
-      "\n\nbefore_seq\030\010 \001(\003\022\021\n\tafter_seq\030\t \001(\003\"\312\001" +
-      "\n\'GetRemoteOperationContainerLogsRespons" +
-      "e\022>\n\tlog_lines\030\001 \003(\0132+.ondewo.nlu.Remote" +
-      "OperationContainerLogLine\022\021\n\ttruncated\030\002" +
-      " \001(\010\022\031\n\021min_available_seq\030\003 \001(\003\022\031\n\021max_a" +
-      "vailable_seq\030\004 \001(\003\022\026\n\016has_more_older\030\005 \001" +
-      "(\010\"\304\001\n\037RemoteOperationContainerLogLine\022-" +
-      "\n\ttimestamp\030\001 \001(\0132\032.google.protobuf.Time" +
-      "stamp\022&\n\005level\030\002 \001(\0162\027.ondewo.nlu.LogSev" +
-      "erity\022\017\n\007message\030\003 \001(\t\022\024\n\014container_id\030\004" +
-      " \001(\t\022\026\n\016container_name\030\005 \001(\t\022\013\n\003seq\030\006 \001(" +
-      "\003\"N\n(GetRemoteOperationContainerStatusRe" +
-      "quest\022\014\n\004name\030\001 \001(\t\022\024\n\014container_id\030\002 \001(" +
-      "\t\"\271\005\n\036RemoteOperationContainerStatus\022\014\n\004" +
-      "name\030\001 \001(\t\022K\n\017lifecycle_state\030\002 \001(\01622.on" +
-      "dewo.nlu.RemoteOperationContainerLifecyc" +
-      "leState\022\021\n\thost_name\030\003 \001(\t\022\026\n\016container_" +
-      "name\030\004 \001(\t\022\024\n\014container_id\030\013 \001(\t\022\021\n\texit" +
-      "_code\030\005 \001(\005\022\022\n\noom_killed\030\006 \001(\010\022\025\n\rhealt" +
-      "h_status\030\007 \001(\t\022.\n\nstarted_at\030\010 \001(\0132\032.goo" +
-      "gle.protobuf.Timestamp\022/\n\013finished_at\030\t " +
-      "\001(\0132\032.google.protobuf.Timestamp\022/\n\013obser" +
-      "ved_at\030\n \001(\0132\032.google.protobuf.Timestamp" +
-      "\022c\n\025environment_variables\030\014 \003(\0132D.ondewo" +
-      ".nlu.RemoteOperationContainerStatus.Envi" +
-      "ronmentVariablesEntry\022\017\n\007command\030\r \003(\t\022\032" +
-      "\n\022memory_limit_bytes\030\016 \001(\003\022\021\n\tnano_cpus\030" +
-      "\017 \001(\003\022\023\n\013cpuset_cpus\030\020 \001(\t\022\021\n\tcpu_quota\030" +
-      "\021 \001(\003\022\022\n\ncpu_period\030\022 \001(\003\022\r\n\005image\030\023 \001(\t" +
-      "\032;\n\031EnvironmentVariablesEntry\022\013\n\003key\030\001 \001" +
-      "(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\226\005\n\030RemoteOperatio" +
-      "nContainer\022\024\n\014container_id\030\001 \001(\t\022\026\n\016cont" +
-      "ainer_name\030\002 \001(\t\022\021\n\thost_name\030\003 \001(\t\022K\n\017l" +
-      "ifecycle_state\030\004 \001(\01622.ondewo.nlu.Remote" +
-      "OperationContainerLifecycleState\022\026\n\016oper" +
-      "ation_name\030\005 \001(\t\022\r\n\005image\030\006 \001(\t\022\r\n\005phase" +
-      "\030\007 \001(\t\022\021\n\texit_code\030\010 \001(\005\022\022\n\noom_killed\030" +
-      "\t \001(\010\022.\n\nstarted_at\030\n \001(\0132\032.google.proto" +
-      "buf.Timestamp\022/\n\013finished_at\030\013 \001(\0132\032.goo" +
-      "gle.protobuf.Timestamp\022\026\n\016logs_available" +
-      "\030\014 \001(\010\022]\n\025environment_variables\030\r \003(\0132>." +
-      "ondewo.nlu.RemoteOperationContainer.Envi" +
-      "ronmentVariablesEntry\022\017\n\007command\030\016 \003(\t\022\032" +
-      "\n\022memory_limit_bytes\030\017 \001(\003\022\021\n\tnano_cpus\030" +
-      "\020 \001(\003\022\023\n\013cpuset_cpus\030\021 \001(\t\022\021\n\tcpu_quota\030" +
-      "\022 \001(\003\022\022\n\ncpu_period\030\023 \001(\003\032;\n\031Environment" +
-      "VariablesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001" +
-      "(\t:\0028\001\"T\n$ListRemoteOperationContainersR" +
-      "equest\022\014\n\004name\030\001 \001(\t\022\036\n\026include_sub_oper" +
-      "ations\030\002 \001(\010\"a\n%ListRemoteOperationConta" +
-      "inersResponse\0228\n\ncontainers\030\001 \003(\0132$.onde" +
-      "wo.nlu.RemoteOperationContainer*\354\003\n&Remo" +
-      "teOperationContainerLifecycleState\022:\n6RE" +
-      "MOTE_OPERATION_CONTAINER_LIFECYCLE_STATE" +
-      "_UNSPECIFIED\020\000\0228\n4REMOTE_OPERATION_CONTA" +
-      "INER_LIFECYCLE_STATE_NOT_FOUND\020\001\0226\n2REMO" +
-      "TE_OPERATION_CONTAINER_LIFECYCLE_STATE_C" +
-      "REATED\020\002\0226\n2REMOTE_OPERATION_CONTAINER_L" +
-      "IFECYCLE_STATE_RUNNING\020\003\0225\n1REMOTE_OPERA" +
-      "TION_CONTAINER_LIFECYCLE_STATE_PAUSED\020\004\022" +
-      "9\n5REMOTE_OPERATION_CONTAINER_LIFECYCLE_" +
-      "STATE_RESTARTING\020\005\0225\n1REMOTE_OPERATION_C" +
-      "ONTAINER_LIFECYCLE_STATE_EXITED\020\006\0223\n/REM" +
-      "OTE_OPERATION_CONTAINER_LIFECYCLE_STATE_" +
-      "DEAD\020\0072\222\t\n\nOperations\022v\n\016ListOperations\022" +
-      "!.ondewo.nlu.ListOperationsRequest\032\".ond" +
-      "ewo.nlu.ListOperationsResponse\"\035\202\323\344\223\002\027\022\025" +
-      "/v1/{name=operations}\022h\n\014GetOperation\022\037." +
-      "ondewo.nlu.GetOperationRequest\032\025.ondewo." +
-      "nlu.Operation\" \202\323\344\223\002\032\022\030/v1/{name=operati" +
-      "ons/**}\022o\n\017DeleteOperation\022\".ondewo.nlu." +
-      "DeleteOperationRequest\032\026.google.protobuf" +
-      ".Empty\" \202\323\344\223\002\032*\030/v1/{name=operations/**}" +
-      "\022y\n\017CancelOperation\022\".ondewo.nlu.CancelO" +
-      "perationRequest\032\026.google.protobuf.Empty\"" +
-      "*\202\323\344\223\002$\"\037/v1/{name=operations/**}:cancel" +
-      ":\001*\022\212\001\n\"StreamRemoteOperationContainerLo" +
-      "gs\0225.ondewo.nlu.StreamRemoteOperationCon" +
-      "tainerLogsRequest\032+.ondewo.nlu.RemoteOpe" +
-      "rationContainerLogLine0\001\022\272\001\n\037GetRemoteOp" +
-      "erationContainerLogs\0222.ondewo.nlu.GetRem" +
-      "oteOperationContainerLogsRequest\0323.ondew" +
-      "o.nlu.GetRemoteOperationContainerLogsRes" +
-      "ponse\".\202\323\344\223\002(\022&/v1/{name=operations/**}:" +
-      "containerLogs\022\267\001\n!GetRemoteOperationCont" +
-      "ainerStatus\0224.ondewo.nlu.GetRemoteOperat" +
-      "ionContainerStatusRequest\032*.ondewo.nlu.R" +
-      "emoteOperationContainerStatus\"0\202\323\344\223\002*\022(/" +
-      "v1/{name=operations/**}:containerStatus\022" +
-      "\261\001\n\035ListRemoteOperationContainers\0220.onde" +
-      "wo.nlu.ListRemoteOperationContainersRequ" +
-      "est\0321.ondewo.nlu.ListRemoteOperationCont" +
-      "ainersResponse\"+\202\323\344\223\002%\022#/v1/{name=operat" +
-      "ions/**}:containersb\006proto3"
+      "\005\022\024\n\014container_id\030\004 \001(\t\022\r\n\005regex\030\005 \001(\t\022\024" +
+      "\n\014resume_token\030\006 \001(\t\"\351\002\n&GetRemoteOperat" +
+      "ionContainerLogsRequest\022\014\n\004name\030\001 \001(\t\022.\n" +
+      "\rmin_log_level\030\002 \001(\0162\027.ondewo.nlu.LogSev" +
+      "erity\022.\n\nstart_time\030\003 \001(\0132\032.google.proto" +
+      "buf.Timestamp\022,\n\010end_time\030\004 \001(\0132\032.google" +
+      ".protobuf.Timestamp\022\021\n\tmax_lines\030\005 \001(\005\022\r" +
+      "\n\005regex\030\006 \001(\t\022\024\n\014container_id\030\007 \001(\t\022\022\n\nb" +
+      "efore_seq\030\010 \001(\003\022\021\n\tafter_seq\030\t \001(\003\022.\n\nfi" +
+      "eld_mask\030\n \001(\0132\032.google.protobuf.FieldMa" +
+      "sk\022\024\n\014resume_token\030\013 \001(\t\"\375\001\n\'GetRemoteOp" +
+      "erationContainerLogsResponse\022>\n\tlog_line" +
+      "s\030\001 \003(\0132+.ondewo.nlu.RemoteOperationCont" +
+      "ainerLogLine\022\021\n\ttruncated\030\002 \001(\010\022\031\n\021min_a" +
+      "vailable_seq\030\003 \001(\003\022\031\n\021max_available_seq\030" +
+      "\004 \001(\003\022\026\n\016has_more_older\030\005 \001(\010\022\031\n\021next_re" +
+      "sume_token\030\006 \001(\t\022\026\n\016has_more_newer\030\007 \001(\010" +
+      "\"\330\001\n\037RemoteOperationContainerLogLine\022-\n\t" +
+      "timestamp\030\001 \001(\0132\032.google.protobuf.Timest" +
+      "amp\022&\n\005level\030\002 \001(\0162\027.ondewo.nlu.LogSever" +
+      "ity\022\017\n\007message\030\003 \001(\t\022\024\n\014container_id\030\004 \001" +
+      "(\t\022\026\n\016container_name\030\005 \001(\t\022\013\n\003seq\030\006 \001(\003\022" +
+      "\022\n\nlog_stream\030\007 \001(\t\"N\n(GetRemoteOperatio" +
+      "nContainerStatusRequest\022\014\n\004name\030\001 \001(\t\022\024\n" +
+      "\014container_id\030\002 \001(\t\"\271\005\n\036RemoteOperationC" +
+      "ontainerStatus\022\014\n\004name\030\001 \001(\t\022K\n\017lifecycl" +
+      "e_state\030\002 \001(\01622.ondewo.nlu.RemoteOperati" +
+      "onContainerLifecycleState\022\021\n\thost_name\030\003" +
+      " \001(\t\022\026\n\016container_name\030\004 \001(\t\022\024\n\014containe" +
+      "r_id\030\013 \001(\t\022\021\n\texit_code\030\005 \001(\005\022\022\n\noom_kil" +
+      "led\030\006 \001(\010\022\025\n\rhealth_status\030\007 \001(\t\022.\n\nstar" +
+      "ted_at\030\010 \001(\0132\032.google.protobuf.Timestamp" +
+      "\022/\n\013finished_at\030\t \001(\0132\032.google.protobuf." +
+      "Timestamp\022/\n\013observed_at\030\n \001(\0132\032.google." +
+      "protobuf.Timestamp\022c\n\025environment_variab" +
+      "les\030\014 \003(\0132D.ondewo.nlu.RemoteOperationCo" +
+      "ntainerStatus.EnvironmentVariablesEntry\022" +
+      "\017\n\007command\030\r \003(\t\022\032\n\022memory_limit_bytes\030\016" +
+      " \001(\003\022\021\n\tnano_cpus\030\017 \001(\003\022\023\n\013cpuset_cpus\030\020" +
+      " \001(\t\022\021\n\tcpu_quota\030\021 \001(\003\022\022\n\ncpu_period\030\022 " +
+      "\001(\003\022\r\n\005image\030\023 \001(\t\032;\n\031EnvironmentVariabl" +
+      "esEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"" +
+      "\226\005\n\030RemoteOperationContainer\022\024\n\014containe" +
+      "r_id\030\001 \001(\t\022\026\n\016container_name\030\002 \001(\t\022\021\n\tho" +
+      "st_name\030\003 \001(\t\022K\n\017lifecycle_state\030\004 \001(\01622" +
+      ".ondewo.nlu.RemoteOperationContainerLife" +
+      "cycleState\022\026\n\016operation_name\030\005 \001(\t\022\r\n\005im" +
+      "age\030\006 \001(\t\022\r\n\005phase\030\007 \001(\t\022\021\n\texit_code\030\010 " +
+      "\001(\005\022\022\n\noom_killed\030\t \001(\010\022.\n\nstarted_at\030\n " +
+      "\001(\0132\032.google.protobuf.Timestamp\022/\n\013finis" +
+      "hed_at\030\013 \001(\0132\032.google.protobuf.Timestamp" +
+      "\022\026\n\016logs_available\030\014 \001(\010\022]\n\025environment_" +
+      "variables\030\r \003(\0132>.ondewo.nlu.RemoteOpera" +
+      "tionContainer.EnvironmentVariablesEntry\022" +
+      "\017\n\007command\030\016 \003(\t\022\032\n\022memory_limit_bytes\030\017" +
+      " \001(\003\022\021\n\tnano_cpus\030\020 \001(\003\022\023\n\013cpuset_cpus\030\021" +
+      " \001(\t\022\021\n\tcpu_quota\030\022 \001(\003\022\022\n\ncpu_period\030\023 " +
+      "\001(\003\032;\n\031EnvironmentVariablesEntry\022\013\n\003key\030" +
+      "\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"T\n$ListRemoteOp" +
+      "erationContainersRequest\022\014\n\004name\030\001 \001(\t\022\036" +
+      "\n\026include_sub_operations\030\002 \001(\010\"a\n%ListRe" +
+      "moteOperationContainersResponse\0228\n\nconta" +
+      "iners\030\001 \003(\0132$.ondewo.nlu.RemoteOperation" +
+      "Container*\354\003\n&RemoteOperationContainerLi" +
+      "fecycleState\022:\n6REMOTE_OPERATION_CONTAIN" +
+      "ER_LIFECYCLE_STATE_UNSPECIFIED\020\000\0228\n4REMO" +
+      "TE_OPERATION_CONTAINER_LIFECYCLE_STATE_N" +
+      "OT_FOUND\020\001\0226\n2REMOTE_OPERATION_CONTAINER" +
+      "_LIFECYCLE_STATE_CREATED\020\002\0226\n2REMOTE_OPE" +
+      "RATION_CONTAINER_LIFECYCLE_STATE_RUNNING" +
+      "\020\003\0225\n1REMOTE_OPERATION_CONTAINER_LIFECYC" +
+      "LE_STATE_PAUSED\020\004\0229\n5REMOTE_OPERATION_CO" +
+      "NTAINER_LIFECYCLE_STATE_RESTARTING\020\005\0225\n1" +
+      "REMOTE_OPERATION_CONTAINER_LIFECYCLE_STA" +
+      "TE_EXITED\020\006\0223\n/REMOTE_OPERATION_CONTAINE" +
+      "R_LIFECYCLE_STATE_DEAD\020\0072\222\t\n\nOperations\022" +
+      "v\n\016ListOperations\022!.ondewo.nlu.ListOpera" +
+      "tionsRequest\032\".ondewo.nlu.ListOperations" +
+      "Response\"\035\202\323\344\223\002\027\022\025/v1/{name=operations}\022" +
+      "h\n\014GetOperation\022\037.ondewo.nlu.GetOperatio" +
+      "nRequest\032\025.ondewo.nlu.Operation\" \202\323\344\223\002\032\022" +
+      "\030/v1/{name=operations/**}\022o\n\017DeleteOpera" +
+      "tion\022\".ondewo.nlu.DeleteOperationRequest" +
+      "\032\026.google.protobuf.Empty\" \202\323\344\223\002\032*\030/v1/{n" +
+      "ame=operations/**}\022y\n\017CancelOperation\022\"." +
+      "ondewo.nlu.CancelOperationRequest\032\026.goog" +
+      "le.protobuf.Empty\"*\202\323\344\223\002$\"\037/v1/{name=ope" +
+      "rations/**}:cancel:\001*\022\212\001\n\"StreamRemoteOp" +
+      "erationContainerLogs\0225.ondewo.nlu.Stream" +
+      "RemoteOperationContainerLogsRequest\032+.on" +
+      "dewo.nlu.RemoteOperationContainerLogLine" +
+      "0\001\022\272\001\n\037GetRemoteOperationContainerLogs\0222" +
+      ".ondewo.nlu.GetRemoteOperationContainerL" +
+      "ogsRequest\0323.ondewo.nlu.GetRemoteOperati" +
+      "onContainerLogsResponse\".\202\323\344\223\002(\022&/v1/{na" +
+      "me=operations/**}:containerLogs\022\267\001\n!GetR" +
+      "emoteOperationContainerStatus\0224.ondewo.n" +
+      "lu.GetRemoteOperationContainerStatusRequ" +
+      "est\032*.ondewo.nlu.RemoteOperationContaine" +
+      "rStatus\"0\202\323\344\223\002*\022(/v1/{name=operations/**" +
+      "}:containerStatus\022\261\001\n\035ListRemoteOperatio" +
+      "nContainers\0220.ondewo.nlu.ListRemoteOpera" +
+      "tionContainersRequest\0321.ondewo.nlu.ListR" +
+      "emoteOperationContainersResponse\"+\202\323\344\223\002%" +
+      "\022#/v1/{name=operations/**}:containersb\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -25198,25 +26612,25 @@ java.lang.String defaultValue) {
     internal_static_ondewo_nlu_StreamRemoteOperationContainerLogsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ondewo_nlu_StreamRemoteOperationContainerLogsRequest_descriptor,
-        new java.lang.String[] { "Name", "MinLogLevel", "TailLines", "ContainerId", });
+        new java.lang.String[] { "Name", "MinLogLevel", "TailLines", "ContainerId", "Regex", "ResumeToken", });
     internal_static_ondewo_nlu_GetRemoteOperationContainerLogsRequest_descriptor =
       getDescriptor().getMessageType(8);
     internal_static_ondewo_nlu_GetRemoteOperationContainerLogsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ondewo_nlu_GetRemoteOperationContainerLogsRequest_descriptor,
-        new java.lang.String[] { "Name", "MinLogLevel", "StartTime", "EndTime", "MaxLines", "Regex", "ContainerId", "BeforeSeq", "AfterSeq", });
+        new java.lang.String[] { "Name", "MinLogLevel", "StartTime", "EndTime", "MaxLines", "Regex", "ContainerId", "BeforeSeq", "AfterSeq", "FieldMask", "ResumeToken", });
     internal_static_ondewo_nlu_GetRemoteOperationContainerLogsResponse_descriptor =
       getDescriptor().getMessageType(9);
     internal_static_ondewo_nlu_GetRemoteOperationContainerLogsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ondewo_nlu_GetRemoteOperationContainerLogsResponse_descriptor,
-        new java.lang.String[] { "LogLines", "Truncated", "MinAvailableSeq", "MaxAvailableSeq", "HasMoreOlder", });
+        new java.lang.String[] { "LogLines", "Truncated", "MinAvailableSeq", "MaxAvailableSeq", "HasMoreOlder", "NextResumeToken", "HasMoreNewer", });
     internal_static_ondewo_nlu_RemoteOperationContainerLogLine_descriptor =
       getDescriptor().getMessageType(10);
     internal_static_ondewo_nlu_RemoteOperationContainerLogLine_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ondewo_nlu_RemoteOperationContainerLogLine_descriptor,
-        new java.lang.String[] { "Timestamp", "Level", "Message", "ContainerId", "ContainerName", "Seq", });
+        new java.lang.String[] { "Timestamp", "Level", "Message", "ContainerId", "ContainerName", "Seq", "LogStream", });
     internal_static_ondewo_nlu_GetRemoteOperationContainerStatusRequest_descriptor =
       getDescriptor().getMessageType(11);
     internal_static_ondewo_nlu_GetRemoteOperationContainerStatusRequest_fieldAccessorTable = new

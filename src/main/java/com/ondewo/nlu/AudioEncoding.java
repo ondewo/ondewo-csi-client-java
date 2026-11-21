@@ -256,7 +256,7 @@ public enum AudioEncoding
   }
   public static com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return com.ondewo.nlu.SessionProto.getDescriptor().getEnumType(4);
+    return com.ondewo.nlu.SessionProto.getDescriptor().getEnumType(12);
   }
 
   private static final AudioEncoding[] VALUES = values();

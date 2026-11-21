@@ -134,7 +134,7 @@ public enum FeedbackRating
   }
   public static com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return com.ondewo.nlu.SessionProto.getDescriptor().getEnumType(6);
+    return com.ondewo.nlu.SessionProto.getDescriptor().getEnumType(14);
   }
 
   private static final FeedbackRating[] VALUES = values();

@@ -186,7 +186,7 @@ public enum FeedbackTimeGranularity
   }
   public static com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return com.ondewo.nlu.SessionProto.getDescriptor().getEnumType(9);
+    return com.ondewo.nlu.SessionProto.getDescriptor().getEnumType(17);
   }
 
   private static final FeedbackTimeGranularity[] VALUES = values();

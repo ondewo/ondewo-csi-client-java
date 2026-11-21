@@ -169,4 +169,24 @@ public interface ReferencedChunkOrBuilder extends
    */
   com.google.protobuf.ByteString
       getDeepLinkUrlBytes();
+
+  /**
+   * <pre>
+   * Title of the document (optional).
+   * </pre>
+   *
+   * <code>string document_title = 10;</code>
+   * @return The documentTitle.
+   */
+  java.lang.String getDocumentTitle();
+  /**
+   * <pre>
+   * Title of the document (optional).
+   * </pre>
+   *
+   * <code>string document_title = 10;</code>
+   * @return The bytes for documentTitle.
+   */
+  com.google.protobuf.ByteString
+      getDocumentTitleBytes();
 }

@@ -134,7 +134,7 @@ public enum FeedbackScope
   }
   public static com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return com.ondewo.nlu.SessionProto.getDescriptor().getEnumType(8);
+    return com.ondewo.nlu.SessionProto.getDescriptor().getEnumType(16);
   }
 
   private static final FeedbackScope[] VALUES = values();
